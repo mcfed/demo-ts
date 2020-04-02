@@ -1,9 +1,9 @@
-import {ModuleModel} from 'mcf-module'
+import {ORMModel} from '@mcf/core'
 
-const {attr,BaseModel} = ModuleModel
-export const namespace:string = "abc-ts"
+const { attr, BaseModel } = ORMModel;
+export const namespace:string = "abcd"
 
-export default class abc-ts extends BaseModel {
+export default class Abcd extends BaseModel {
   static modelName = namespace
   static fields={}
   static options={
@@ -13,7 +13,7 @@ export default class abc-ts extends BaseModel {
 
 
   // console.log(Schedule.fields)
-Object.assign(abc-ts.fields,BaseModel.fields,{
-    name:attr(),
-    title:attr(),
-})
+Object.assign(Abcd.fields, BaseModel.fields, {
+  name: attr(),
+  title: attr()
+});

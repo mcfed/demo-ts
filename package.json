@@ -1,20 +1,20 @@
 {
-  "name": "abc-ts",
+  "name": "demo-ts",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
+    "@capaa/tongfang": "^0.1.8",
+    "@mcf/core": "^0.2.8",
+    "@mcf/crud": "^0.2.0-beta2",
+    "@mcf/module": "^0.1.5",
     "@mcf/react-scripts": "0.3.5",
-    "@types/jest": "24.0.23",
-    "@types/node": "12.12.14",
-    "@types/react": "16.9.14",
-    "@types/react-dom": "16.9.4",
     "antd": "^3.5.1",
     "mcf-components": "^1.3.2",
     "mcf-core": "^0.2.0",
     "mcf-crud": "^1.3.1",
     "mcf-utils": "^1.3.4",
-    "react": "16.3.0",
-    "react-dom": "16.3.0",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
     "react-hot-loader": "^4.12.12",
     "react-redux": "^5.1.0",
     "react-router": "^4.3.1",
@@ -22,7 +22,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "typescript": "3.7.2"
+    "typescript": "^3.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,7 +34,14 @@
     "package": "node_modules/.bin/electron-packager build abc-ts  --electronVersion=1.7.5 --platform=darwin   --out=releases  --overwrite "
   },
   "devDependencies": {
+    "@types/jest": "24.0.23",
+    "@types/node": "12.12.14",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "16.9.4",
+    "@types/react-router-dom": "^5.1.3",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
     "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-transform-typescript-metadata": "^0.3.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.4",
@@ -44,13 +51,7 @@
     "mcf-module": "^1.3.2",
     "prettier": "^1.14.3",
     "pretty-quick": "^1.4.1",
-    "react-intl": "^3.1.11"
-  },
-  "eslintConfig": {
-    "extends": "react-app",
-    "globals": {
-      "API_PREFIX": "readonly"
-    }
+    "react-intl": "^4.3.1"
   },
   "browserslist": {
     "production": [

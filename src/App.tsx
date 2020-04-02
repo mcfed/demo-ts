@@ -1,29 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+//@ts-ignore
 import { Provider } from 'react-redux';
 import { createHashHistory } from 'history';
-import { IntlProvider } from 'react-intl';
-import { StoreManage } from 'mcf-core';
+import { IntlProvider } from "react-intl";
+//@ts-ignore
 import { createLogger } from 'redux-logger';
 import { AppContainer } from 'react-hot-loader';
 import * as Module from './index';
+//@ts-ignore
+import * as  TongfangModule from '@capaa/tongfang'
 
-const store = new StoreManage(createHashHistory(), null, [createLogger()]);
+import "antd/dist/antd.css"
 
-const App:ReactElement = () => (
+import {StoreManager} from "@mcf/core";
+
+
+
+const store = new StoreManager(
+  createHashHistory(),
+  //@ts-ignore
+  new Module.reducer().getReducer(),[createLogger()]
+);
+
+console.log();
+
+const App = () => (
   <Provider store={store.getStore()}>
-    <IntlProvider onError={function(err) {}}>
+    <IntlProvider locale="zh-CN" onError={function(err) {}}>
       <Router>
         <Switch>
-          <Route path="/" component={store.loadModule(Module)}></Route>
+          <Route
+            path="/tongfang"
+            render={props => store.loadModule(TongfangModule)(props)}
+          ></Route>
+          <Route path="/" component={store.loadClassModule(Module)}></Route>
         </Switch>
       </Router>
     </IntlProvider>
   </Provider>
 );
 
-const render:Function = Component => {
+const render = (Component:any) => {
   ReactDOM.render(
     <AppContainer>
       <App />
@@ -34,8 +53,8 @@ const render:Function = Component => {
 
 render(App);
 
-if (module.hot) {
-  module.hot.accept(() => {
-    render(App);
-  });
-}
+// if (module.hot) {
+//   module.hot.accept(() => {
+//     render(App);
+//   });
+// }
