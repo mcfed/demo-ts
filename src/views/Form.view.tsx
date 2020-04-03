@@ -3,14 +3,12 @@ import { Input } from "antd";
 import { BaseForm, FormItem, Panel } from "mcf-components";
 import { IRFormProps, IRFormState, IProps, IState, IParams } from "@mcf/crud";
 import { RFormPage } from "@mcf/crud";
-import Model from "../model";
+import Model from '../model'
 
-//@ts-ignore
 interface FormProps<M extends Model> extends IRFormProps<M> {
   reducer: Object;
 }
 
-//@ts-ignore
 interface FormState<M extends Model> extends IRFormState<M> {
   value: number;
 }
@@ -29,13 +27,13 @@ export default class FormView<
     }
   }
 
-  handleSubmit(values): void {
+  handleSubmit(values:Object): void {
     const { actions } = this.props;
     // this.state.value
 
     actions.fetchSave(values);
   }
-  handleCancel(values): void {
+  handleCancel(values:Object): void {
     this.goBack();
   }
 

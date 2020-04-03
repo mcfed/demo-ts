@@ -10,7 +10,7 @@ import { createLogger } from 'redux-logger';
 import { AppContainer } from 'react-hot-loader';
 import * as Module from './index';
 //@ts-ignore
-import * as  TongfangModule from '@capaa/tongfang'
+// import * as  TongfangModule from '@capaa/tongfang'
 
 import "antd/dist/antd.css"
 
@@ -33,7 +33,7 @@ const App = () => (
         <Switch>
           <Route
             path="/tongfang"
-            render={props => store.loadModule(TongfangModule)(props)}
+            render={props => store.importModule("@capaa/tongfang")(props)}
           ></Route>
           <Route path="/" component={store.loadClassModule(Module)}></Route>
         </Switch>

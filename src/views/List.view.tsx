@@ -1,5 +1,6 @@
 import React, { Component, ReactNode } from "react";
 import { Button, Input, Select, Table, Tabs } from "antd";
+//@ts-ignore
 import { ButtonGroups, AdvancedSearch, DataTable, Panel } from "mcf-components";
 import {
   IRListProps,
@@ -16,15 +17,12 @@ import { CarAction, ICarAction } from "../action";
 
 
 
-//@ts-ignore
-interface ListProps<M extends AnyModel> extends IRListProps<M> {
-  actions:ICarAction,
+interface ListProps<M extends Model> extends IRListProps<M> {
   reducer: Object;
 }
 
 
-//@ts-ignore
-interface ListState<M extends AnyModel> extends IRListState<M> {
+interface ListState<M extends Model> extends IRListState<M> {
   // value: number
 }
 
@@ -70,12 +68,12 @@ export default class ListView<
     } else if (actionType === "detail") {
       this.goDetail(rowkeys);
     } else if (actionType === "delete") {
-      actions.fetchDelete(rowkeys);
+      // actions.fetchDelete(rowkeys);
       // actions.
     }
     this.clearSelectRows();
   }
-  renderOptionItem(item, idx: PK): ReactNode {
+  renderOptionItem(item:{label:string,value:string}, idx: PK): ReactNode {
     return (
       <Select.Option key={idx} value={item.value}>
         {item.label}
@@ -112,12 +110,12 @@ export default class ListView<
 
   renderToolbar(): ReactNode {
     const { selectedRowKeys } = this.state;
-    this.state.selectedRowKeys[0];
+    // this.state.selectedRowKeys[0];
     // this.state.selectedRows.map((it:M)=>it.name)
     const {  actions, locale } = this.props;
     
     return (
-      <ButtonGroups handleClick={this.handlerMenu.bind(this, selectedRowKeys)}>
+      <ButtonGroups handleClick={(actionType:string)=>this.handlerMenu.bind(selectedRowKeys,actionType)}>
         <Button type="primary">{locale("GLOBAL.NEW")} </Button>
         <Button /* loading={spins(actions.fetchDelete)} */>
           {locale("GLOBAL.REMOVE")}
@@ -125,11 +123,11 @@ export default class ListView<
       </ButtonGroups>
     );
   }
-  renderTableButtonGroups(text, row): ReactNode {
+  renderTableButtonGroups(text:string, row:M): ReactNode {
     const { locale } = this.props;
     return (
       <ButtonGroups
-        handleClick={this.handlerMenu.bind(this, row.id)}
+        handleClick={(actionType:string)=>this.handlerMenu(row.id.toString(),actionType)}
         size="small"
       >
         <Button>{locale("GLOBAL.MODIFY")}</Button>

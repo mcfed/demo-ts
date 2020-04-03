@@ -1,25 +1,25 @@
-interface IAction {
-  fetchItem();
+interface IAction{
+
 }
 
 interface IReducer{
-  getReducer()
+  getReducer():void
 }
 
 export interface IApi{
-  fetchList(params:any);
-  fetchItem(params:any);
-  fetchSave(params:any);
-  fetchUpdate(params:any);
-  fetchDelete(params:any);
+  fetchList(params:any):void;
+  fetchItem(params:any):void;
+  fetchSave(params:any):void;
+  fetchUpdate(params:any):void;
+  fetchDelete(params:any):void;
 }
 
 export interface ICarReducer extends IReducer {
-  saveItem()
+  saveItem():Object
 }
 
 export interface ICarAction extends IAction {
-  stop({ a: string, b: number });
-  fetchPage();
+  stop(payload:{ a: string, b: number }):void;
+  fetchPage():void;
 }
 
