@@ -1,4 +1,3 @@
-import "reflect-metadata"
 import Api from './api'
 import Reducer from "./reducer";
 import { InjectFactory } from "@mcf/core";

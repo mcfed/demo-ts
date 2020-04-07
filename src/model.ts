@@ -1,7 +1,7 @@
 import {ORMModel} from '@mcf/core'
 
 const { attr, BaseModel, Model, fieldSetAttr } = ORMModel;
-export const namespace:string = "abcd"
+export const namespace:string = "Abcd"
 
 // export default class Abcd extends BaseModel {
 //   static modelName = namespace
@@ -27,7 +27,7 @@ interface Prop{
 
 @Model()
 class Abcd extends BaseModel {
-  static modelName: string = "abcd";
+  static modelName: string = "Abcd";
   @fieldSetAttr()
   id!: number;
   @fieldSetAttr()

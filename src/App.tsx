@@ -31,10 +31,10 @@ const App = () => (
     <IntlProvider locale="zh-CN" onError={function(err) {}}>
       <Router>
         <Switch>
-          <Route
+          {/* <Route
             path="/tongfang"
             render={props => store.importModule("@capaa/tongfang")(props)}
-          ></Route>
+          ></Route> */}
           <Route path="/" component={store.loadClassModule(Module)}></Route>
         </Switch>
       </Router>

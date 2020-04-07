@@ -5,23 +5,32 @@ import ListView from "./views/List.view";
 // import DetailView from "./views/Detail.view";
 import messages from "./locales";
 import { namespace } from "./model";
+import { injectIntl } from "react-intl";
+import {connect} from 'react-redux'
 
+const { defaultMergeProps } = Container;
+const { reducerItemSelector, reducerListSelector } = Selector;
 
-console.log(InjectFactory.Factory(CarAction))
-
-const { connectContainer, containerFactory } = Container;
-const mapStateToProps = (state: any, props: object) => {
-  // Selector.
+export const mapStateToProps = (state:any, props:any) => {
   return {
+    actions: InjectFactory.Factory(CarAction),
+    appReducer: state.appReducer,
+    fetchingReducer: state.fetchingReducer,
+    reducer: state[namespace],
     messages: messages,
-    Action: CarAction,
-    ...Selector.containerSelector(namespace, props)(state)
+    items: reducerListSelector(state.ORMReducer, namespace),
+    item: reducerItemSelector(
+      state.ORMReducer,
+      namespace,
+      props.match.params.id
+    ),
   };
 };
-//FactoryContainer
-//@ts-ignore
-// export const FormContainer = connectContainer(mapStateToProps)(FormView);
-//@ts-ignore
-export const ListContainer = containerFactory(mapStateToProps)(ListView);
+
+export const ListContainer = injectIntl(
+  connect(mapStateToProps, null, defaultMergeProps)(ListView)
+);
+
+// export const ListContainer = containerFactory(mapStateToProps)(ListView);
 //@ts-ignore
 // export const DetailContainer = connectContainer(mapStateToProps)(DetailView);

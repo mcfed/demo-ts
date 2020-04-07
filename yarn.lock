@@ -986,26 +986,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@capaa/tongfang@^0.1.8":
-  version "0.1.8"
-  resolved "http://192.168.200.178:4873/@capaa%2ftongfang/-/tongfang-0.1.8.tgz#2883a7ff5ca30dcc411f6a294245d049c716d1c5"
-  integrity sha512-TXZdTiiCBKIme1mcxpSLj9Qs9Bla6v1bYfR82Rb8ROt4aLraFrbLwkD7D4FaeBBNjdKpdFcyc3niMxCyKcTGCQ==
-  dependencies:
-    antd "3.5.1"
-    mcf-components "^1.3.2"
-    mcf-core "^0.2.0"
-    mcf-crud "^1.3.1"
-    mcf-utils "^1.3.4"
-    react "16.3.0"
-    react-dom "16.3.0"
-    react-hot-loader "^4.12.12"
-    react-redux "^5.1.0"
-    react-router "^4.3.1"
-    react-router-config "^4.4.0-beta.8"
-    react-router-dom "^4.3.1"
-    redux "^4.0.1"
-    redux-logger "^3.0.6"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "http://192.168.200.178:4873/@cnakazawa%2fwatch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -1013,13 +993,6 @@
   dependencies:
     exec-sh "^0.3.2"
     minimist "^1.2.0"
-
-"@commitlint/config-conventional@^8.2.0":
-  version "8.3.4"
-  resolved "http://192.168.200.178:4873/@commitlint%2fconfig-conventional/-/config-conventional-8.3.4.tgz#fed13b3711690663b176c1f6b39c205a565618d2"
-  integrity sha512-w0Yc5+aVAjZgjYqx29igBOnVCj8O22gy3Vo6Fyp7PwoS7+AYS1x3sN7IBq6i7Ae15Mv5P+rEx1pkxXo5zOMe4g==
-  dependencies:
-    conventional-changelog-conventionalcommits "4.2.1"
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
@@ -1263,22 +1236,6 @@
   optionalDependencies:
     vue "^2.6.10"
 
-"@mcf/module@^0.1.5":
-  version "0.1.5"
-  resolved "http://192.168.200.178:4873/@mcf%2fmodule/-/module-0.1.5.tgz#8e5f80aed0e5a0d793e3d5f8bbf8c01206f16828"
-  integrity sha512-PJUMdlczGVhuZBK/MFsAhSQZRdj85OBNNps3eNCaOM7DH8TXtONzpC+ruTY3v9nnixNcmR2zLOjCtOiymEHkRg==
-  dependencies:
-    "@commitlint/config-conventional" "^8.2.0"
-    connected-react-router "5.0.0"
-    inversify "^5.0.1"
-    react "~16.3.2"
-    react-redux "5.1.0"
-    react-router "4.3.1"
-    redux "4.0.4"
-    redux-actions "^2.6.5"
-    redux-saga "0.16.2"
-    reflect-metadata "^0.1.13"
-
 "@mcf/react-scripts@0.3.5":
   version "0.3.5"
   resolved "http://192.168.200.178:4873/@mcf%2freact-scripts/-/react-scripts-0.3.5.tgz#df786ba345ed793bc7afc879755f68977ff930be"
@@ -1514,7 +1471,7 @@
   resolved "http://192.168.200.178:4873/@types%2fhistory/-/history-4.7.5.tgz#527d20ef68571a4af02ed74350164e7a67544860"
   integrity sha512-wLD/Aq2VggCJXSjxEwrMafIP51Z+13H78nXIX0ABEuIGhmB5sNGbR113MOKo+yfw+RDo1ZU3DM6yfnnRF/+ouw==
 
-"@types/hoist-non-react-statics@^3.3.1":
+"@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "http://192.168.200.178:4873/@types%2fhoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
@@ -1595,6 +1552,16 @@
   integrity sha512-fya9xteU/n90tda0s+FtN5Ym4tbgxpq/hb/Af24dvs6uYnYn+fspaxw5USlw0R8apDNwxsqumdRoCoKitckQqw==
   dependencies:
     "@types/react" "*"
+
+"@types/react-redux@^7.1.7":
+  version "7.1.7"
+  resolved "http://192.168.200.178:4873/@types%2freact-redux/-/react-redux-7.1.7.tgz#12a0c529aba660696947384a059c5c6e08185c7a"
+  integrity sha512-U+WrzeFfI83+evZE2dkZ/oF/1vjIYgqrb5dGgedkqVV8HEfDFujNgWCwHL89TDuWKb47U0nTBT6PLGq4IIogWg==
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
 
 "@types/react-router-dom@^5.1.3":
   version "5.1.3"
@@ -2234,11 +2201,6 @@ array-flatten@^2.1.0:
   version "2.1.2"
   resolved "http://192.168.200.178:4873/array-flatten/-/array-flatten-2.1.2.tgz#24ef80a28c1a893617e2149b0c6d0d788293b099"
   integrity sha512-hNfzcOV8W4NdualtqBFPyVO+54DSJuZGY9qT4pRroB6S9e3iiido2ISIC5h9R2sPJ8H3FHCIiEnsv1lPXO3KtQ==
-
-array-ify@^1.0.0:
-  version "1.0.0"
-  resolved "http://192.168.200.178:4873/array-ify/-/array-ify-1.0.0.tgz#9e528762b4a9066ad163a6962a364418e9626ece"
-  integrity sha1-nlKHYrSpBmrRY6aWKjZEGOlibs4=
 
 array-includes@^3.0.3:
   version "3.1.1"
@@ -3236,14 +3198,6 @@ commondir@^1.0.1:
   resolved "http://192.168.200.178:4873/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
-compare-func@^1.3.1:
-  version "1.3.2"
-  resolved "http://192.168.200.178:4873/compare-func/-/compare-func-1.3.2.tgz#99dd0ba457e1f9bc722b12c08ec33eeab31fa648"
-  integrity sha1-md0LpFfh+bxyKxLAjsM+6rMfpkg=
-  dependencies:
-    array-ify "^1.0.0"
-    dot-prop "^3.0.0"
-
 component-classes@1.x, component-classes@^1.2.5, component-classes@^1.2.6:
   version "1.2.6"
   resolved "http://192.168.200.178:4873/component-classes/-/component-classes-1.2.6.tgz#c642394c3618a4d8b0b8919efccbbd930e5cd691"
@@ -3347,15 +3301,6 @@ content-type@~1.0.4:
   version "1.0.4"
   resolved "http://192.168.200.178:4873/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
-
-conventional-changelog-conventionalcommits@4.2.1:
-  version "4.2.1"
-  resolved "http://192.168.200.178:4873/conventional-changelog-conventionalcommits/-/conventional-changelog-conventionalcommits-4.2.1.tgz#d6cb2e2c5d7bfca044a08b9dba84b4082e1a1bd9"
-  integrity sha512-vC02KucnkNNap+foDKFm7BVUSDAXktXrUJqGszUuYnt6T0J2azsbYz/w9TDc3VsrW2v6JOtiQWVcgZnporHr4Q==
-  dependencies:
-    compare-func "^1.3.1"
-    lodash "^4.2.1"
-    q "^1.5.1"
 
 convert-source-map@1.6.0:
   version "1.6.0"
@@ -4134,13 +4079,6 @@ domutils@^1.5.1, domutils@^1.7.0:
   dependencies:
     dom-serializer "0"
     domelementtype "1"
-
-dot-prop@^3.0.0:
-  version "3.0.0"
-  resolved "http://192.168.200.178:4873/dot-prop/-/dot-prop-3.0.0.tgz#1b708af094a49c9a0e7dbcad790aba539dac1177"
-  integrity sha1-G3CK8JSknJoOfbyteQq6U52sEXc=
-  dependencies:
-    is-obj "^1.0.0"
 
 dot-prop@^5.2.0:
   version "5.2.0"
@@ -5981,11 +5919,6 @@ invariant@^2.1.1, invariant@^2.2.2, invariant@^2.2.4:
   dependencies:
     loose-envify "^1.0.0"
 
-inversify@^5.0.1:
-  version "5.0.1"
-  resolved "http://192.168.200.178:4873/inversify/-/inversify-5.0.1.tgz#500d709b1434896ce5a0d58915c4a4210e34fb6e"
-  integrity sha512-Ieh06s48WnEYGcqHepdsJUIJUXpwH5o5vodAX+DK2JA/gjy4EbEcQZxw+uFfzysmKjiLXGYwNG3qDZsKVMcINQ==
-
 invert-kv@^2.0.0:
   version "2.0.0"
   resolved "http://192.168.200.178:4873/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
@@ -6198,7 +6131,7 @@ is-number@^3.0.0:
   dependencies:
     kind-of "^3.0.2"
 
-is-obj@^1.0.0, is-obj@^1.0.1:
+is-obj@^1.0.1:
   version "1.0.1"
   resolved "http://192.168.200.178:4873/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
   integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
@@ -7350,7 +7283,7 @@ lodash.uniq@^4.5.0:
   resolved "http://192.168.200.178:4873/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-"lodash@>=3.5 <5", lodash@^4.15.0, lodash@^4.16.5, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1:
+"lodash@>=3.5 <5", lodash@^4.15.0, lodash@^4.16.5, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5:
   version "4.17.15"
   resolved "http://192.168.200.178:4873/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha1-tEf2ZwoEVbv+7dETku/zMOoJdUg=
@@ -9502,7 +9435,7 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "http://192.168.200.178:4873/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-q@^1.1.2, q@^1.5.1:
+q@^1.1.2:
   version "1.5.1"
   resolved "http://192.168.200.178:4873/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
@@ -10553,16 +10486,6 @@ react@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
-react@~16.3.2:
-  version "16.3.2"
-  resolved "http://192.168.200.178:4873/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
-  integrity sha512-o5GPdkhciQ3cEph6qgvYB7LTOHw/GB0qRI6ZFNugj49qJCFfgHwVNjZ5u+b7nif4vOeMIOuYj3CeYe2IBD74lg==
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
-
 read-pkg-up@^2.0.0:
   version "2.0.0"
   resolved "http://192.168.200.178:4873/read-pkg-up/-/read-pkg-up-2.0.0.tgz#6b72a8048984e0c41e79510fd5e9fa99b3b549be"
@@ -10657,7 +10580,7 @@ reduce-reducers@^0.4.3:
   resolved "http://192.168.200.178:4873/reduce-reducers/-/reduce-reducers-0.4.3.tgz#8e052618801cd8fc2714b4915adaa8937eb6d66c"
   integrity sha512-+CNMnI8QhgVMtAt54uQs3kUxC3Sybpa7Y63HR14uGLgI9/QR5ggHvpxwhGGe3wmx5V91YwqQIblN9k5lspAmGw==
 
-redux-actions@^2.6.4, redux-actions@^2.6.5:
+redux-actions@^2.6.4:
   version "2.6.5"
   resolved "http://192.168.200.178:4873/redux-actions/-/redux-actions-2.6.5.tgz#bdca548768ee99832a63910c276def85e821a27e"
   integrity sha512-pFhEcWFTYNk7DhQgxMGnbsB1H2glqhQJRQrtPb96kD3hWiZRzXHwwmFPswg6V2MjraXRXWNmuP9P84tvdLAJmw==
@@ -10690,26 +10613,13 @@ redux-saga@0.16.2, redux-saga@^0.16.2:
   resolved "http://192.168.200.178:4873/redux-saga/-/redux-saga-0.16.2.tgz#993662e86bc945d8509ac2b8daba3a8c615cc971"
   integrity sha512-iIjKnRThI5sKPEASpUvySemjzwqwI13e3qP7oLub+FycCRDysLSAOwt958niZW6LhxfmS6Qm1BzbU70w/Koc4w==
 
-redux@4.0.4:
-  version "4.0.4"
-  resolved "http://192.168.200.178:4873/redux/-/redux-4.0.4.tgz#4ee1aeb164b63d6a1bcc57ae4aa0b6e6fa7a3796"
-  integrity sha1-TuGusWS2PWobzFeuSqC25vp6N5Y=
-  dependencies:
-    loose-envify "^1.4.0"
-    symbol-observable "^1.2.0"
-
-redux@^4.0.1:
+redux@^4.0.0, redux@^4.0.1:
   version "4.0.5"
   resolved "http://192.168.200.178:4873/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
   integrity sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==
   dependencies:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
-
-reflect-metadata@^0.1.13:
-  version "0.1.13"
-  resolved "http://192.168.200.178:4873/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
-  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 reflect.ownkeys@^0.2.0:
   version "0.2.0"
