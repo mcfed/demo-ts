@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-//@ts-ignore
 import { Provider } from 'react-redux';
 import { createHashHistory } from 'history';
 import { IntlProvider } from "react-intl";
@@ -24,17 +23,11 @@ const store = new StoreManager(
   new Module.reducer().getReducer(),[createLogger()]
 );
 
-console.log();
-
 const App = () => (
   <Provider store={store.getStore()}>
     <IntlProvider locale="zh-CN" onError={function(err) {}}>
       <Router>
         <Switch>
-          {/* <Route
-            path="/tongfang"
-            render={props => store.importModule("@capaa/tongfang")(props)}
-          ></Route> */}
           <Route path="/" component={store.loadClassModule(Module)}></Route>
         </Switch>
       </Router>

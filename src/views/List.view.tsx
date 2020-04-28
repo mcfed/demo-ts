@@ -1,63 +1,44 @@
-import React, { Component, ReactNode } from "react";
-import { Button, Input, Select, Table, Tabs } from "antd";
+import React, { ReactNode } from "react";
+import { Button, Input, Select } from "antd";
 //@ts-ignore
 import { ButtonGroups, AdvancedSearch, DataTable, Panel } from "mcf-components";
-import {
-  IRListProps,
-  IRListState,
-  IProps,
-  IState,
-  IParams,
-  PK
-} from "@mcf/crud";
-import { RListPage } from "@mcf/crud";
-import Model from "../model";
+import { IRListProps, IRListState, IParams, PK, RListPage } from "@mcf/crud";
 import { TableProps } from "antd/lib/table/interface";
-import { CarAction, ICarAction } from "../action";
+import { ICarAction, IReducerState, IModel } from "interface";
+import Model from '../model'
 
-
-
-interface ListProps<M extends Model> extends IRListProps<M> {
-  reducer: Object;
+interface ListProps<M> extends IRListProps {
+  actions: ICarAction;
+  reducer: IReducerState;
+  items: M[];
 }
 
+interface ListState<M> extends IRListState {}
 
-interface ListState<M extends Model> extends IRListState<M> {
-  // value: number
-}
-
-export default class ListView<
-  P extends IProps<ListProps<M>>,
-  S extends IState<ListState<M>>,
-  M extends Model
-  //@ts-ignore
-> extends RListPage<P, S, M> {
- 
+export default class ListView<M extends Model> extends RListPage<
+  ListProps<M>,
+  ListState<M>
+> {
   mergeTableConfig(config: TableProps<M>): Object {
     return {};
   }
 
   componentDidMount(): void {
-    // const { actionsType } = this.props.actions;
-    // console.log(actionsType);
     this.handleFilter(this.searchParams());
   }
   handleFilter(value: Object) {
     const {
       actions,
-      match: { params }
+      match: { params },
     } = this.props;
-    actions.fetchPage()
-    // actions.fetchPage()
-    // this.clearSelectRows()
-    // actions.fetchPage(Object.assign({}, value, params));
+    actions.fetchPage(Object.assign({}, value, params));
   }
   searchParams(): object {
     const { actions, querys } = this.props;
     const defaultParams: Object = {};
 
     // return Object.assign(defaultParams, querys("actions.fetchPage"));
-    return {a:1}
+    return { a: 1 };
   }
   handlerMenu(rowkeys: string, actionType: string): void {
     const { actions } = this.props;
@@ -68,12 +49,11 @@ export default class ListView<
     } else if (actionType === "detail") {
       this.goDetail(rowkeys);
     } else if (actionType === "delete") {
-      // actions.fetchDelete(rowkeys);
-      // actions.
+      actions.fetchDelete(rowkeys);
     }
     this.clearSelectRows();
   }
-  renderOptionItem(item:{label:string,value:string}, idx: PK): ReactNode {
+  renderOptionItem(item: { label: string; value: string }, idx: PK): ReactNode {
     return (
       <Select.Option key={idx} value={item.value}>
         {item.label}
@@ -82,7 +62,6 @@ export default class ListView<
   }
   renderSearchForm(): ReactNode {
     const { actions, spins, locale } = this.props;
-    // this.props.items.map((t:M)=>t.)
     const query: IParams<M> = this.searchParams();
     return (
       <AdvancedSearch
@@ -90,6 +69,7 @@ export default class ListView<
         filterSubmitHandler={this.handleFilter.bind(this)}
       >
         <Input
+          //@ts-ignore
           label={locale("serverName.label")}
           name="serverName"
           //@ts-ignore
@@ -110,12 +90,15 @@ export default class ListView<
 
   renderToolbar(): ReactNode {
     const { selectedRowKeys } = this.state;
-    // this.state.selectedRowKeys[0];
-    // this.state.selectedRows.map((it:M)=>it.name)
-    const {  actions, locale } = this.props;
-    
+    this.state.selectedRows.map((it: M) => it.name);
+    const { actions, locale } = this.props;
+
     return (
-      <ButtonGroups handleClick={(actionType:string)=>this.handlerMenu.bind(selectedRowKeys,actionType)}>
+      <ButtonGroups
+        handleClick={(actionType: string) =>
+          this.handlerMenu.bind(selectedRowKeys, actionType)
+        }
+      >
         <Button type="primary">{locale("GLOBAL.NEW")} </Button>
         <Button /* loading={spins(actions.fetchDelete)} */>
           {locale("GLOBAL.REMOVE")}
@@ -123,11 +106,13 @@ export default class ListView<
       </ButtonGroups>
     );
   }
-  renderTableButtonGroups(text:string, row:M): ReactNode {
+  renderTableButtonGroups(text: string, row: M): ReactNode {
     const { locale } = this.props;
     return (
       <ButtonGroups
-        handleClick={(actionType:string)=>this.handlerMenu(row.id.toString(),actionType)}
+        handleClick={(actionType: string) =>
+          this.handlerMenu(row.id.toString(), actionType)
+        }
         size="small"
       >
         <Button>{locale("GLOBAL.MODIFY")}</Button>
@@ -142,25 +127,26 @@ export default class ListView<
       items,
       actions,
       spins,
-      locale
+      locale,
     } = this.props;
+    items.map((it:M)=>it.title)
     let tableConf: TableProps<M> = {
       rowKey: "id",
-      dataSource: [],
+      dataSource: items,
       columns: [
         {
           title: locale("label"),
           key: "label",
-          dataIndex: "label"
+          dataIndex: "label",
         },
         {
           title: locale("GLOBAL.COLUMNS.OPTIONS"),
           key: "options",
           dataIndex: "options",
           width: 190,
-          render: this.renderTableButtonGroups
-        }
-      ]
+          render: this.renderTableButtonGroups,
+        },
+      ],
     };
 
     return <DataTable {...tableConf} />;

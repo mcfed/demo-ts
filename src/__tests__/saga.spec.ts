@@ -3,8 +3,6 @@ import {CarAction} from '../action';
 import {InjectFactory} from '@mcf/core'
 
 
+it('单元测试',()=>{
 
-  it('saga 单元测试', done => {
-    const { Factory } = InjectFactory;
-    console.log(Factory(CarAction).fetchPage())
-  });
+})

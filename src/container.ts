@@ -1,18 +1,19 @@
-import { Selector, Container,InjectFactory } from "@mcf/core";
+import { injectIntl } from "react-intl";
+import { connect } from "react-redux";
+import { Selector, Container, InjectFactory } from "@mcf/core";
 import { CarAction } from "./action";
-// import FormView from "./views/Form.view";
 import ListView from "./views/List.view";
-// import DetailView from "./views/Detail.view";
+import FormView from "./views/Form.view";
+import DetailView from "./views/Detail.view";
 import messages from "./locales";
 import { namespace } from "./model";
-import { injectIntl } from "react-intl";
-import {connect} from 'react-redux'
 
 const { defaultMergeProps } = Container;
 const { reducerItemSelector, reducerListSelector } = Selector;
 
-export const mapStateToProps = (state:any, props:any) => {
+export const mapStateToProps = (state: any, props: any) => {
   return {
+    intl: props.intl,
     actions: InjectFactory.Factory(CarAction),
     appReducer: state.appReducer,
     fetchingReducer: state.fetchingReducer,
@@ -26,11 +27,16 @@ export const mapStateToProps = (state:any, props:any) => {
     ),
   };
 };
-
 export const ListContainer = injectIntl(
+  //@ts-ignore
   connect(mapStateToProps, null, defaultMergeProps)(ListView)
 );
 
-// export const ListContainer = containerFactory(mapStateToProps)(ListView);
-//@ts-ignore
-// export const DetailContainer = connectContainer(mapStateToProps)(DetailView);
+export const FormContainer = injectIntl(
+  //@ts-ignore
+  connect(mapStateToProps, null, defaultMergeProps)(FormView)
+);
+export const DetailContainer = injectIntl(
+  //@ts-ignore
+  connect(mapStateToProps, null, defaultMergeProps)(DetailView)
+);

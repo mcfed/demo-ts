@@ -1,25 +1,24 @@
 import React, { ReactNode } from "react";
 import { Button } from "antd";
+//@ts-ignore
 import { DetailTable, Panel } from "mcf-components";
 import { IRFormProps, IRFormState, IProps, IState } from "@mcf/crud";
 import { RFormPage } from "@mcf/crud";
 import Model from "../model";
 
-interface FormProps<M extends Model> extends IRFormProps<M> {
+interface FormProps<M extends Model> extends IRFormProps {
   locale: Function;
   querys: Function;
   spins: Function;
   reducer: Object;
+  //item:SessionBoundModel<M>
+  item:any
 }
 
-interface FormState<M extends Model> extends IRFormState<M> {
+interface FormState<M extends Model> extends IRFormState{
   // value: number
 }
-export default class DetailView<
-  P extends IProps<FormProps<M>>,
-  S extends IState<FormState<M>>,
-  M extends Model
-> extends RFormPage<P, S, M> {
+export default class DetailView<M extends Model> extends RFormPage<FormProps<M>, FormState<M>> {
   handleSubmit(value: any): void {
     throw new Error("Method not implemented.");
   }

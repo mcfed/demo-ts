@@ -1,0 +1,192 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1,
+    "workspacePrefix": null
+  },
+  "1 debug pnpm": {
+    "isCaseSensitive": false,
+    "store": "/Users/jaxchow/.pnpm-store/2"
+  },
+  "2 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "demo-ts",
+      "version": "0.1.0",
+      "private": false,
+      "dependencies": {
+        "@mcf/core": "^0.2.8",
+        "@mcf/crud": "^0.2.0-beta2",
+        "@mcf/react-scripts": "0.3.5",
+        "antd": "^3.5.1",
+        "mcf-components": "^1.3.2",
+        "mcf-core": "^0.2.0",
+        "mcf-crud": "^1.3.1",
+        "mcf-utils": "^1.3.4",
+        "react": "16.8.0",
+        "react-dom": "16.8.0",
+        "react-hot-loader": "^4.12.12",
+        "react-redux": "^5.1.0",
+        "react-router": "^4.3.1",
+        "react-router-config": "^4.4.0-beta.8",
+        "react-router-dom": "^4.3.1",
+        "redux": "^4.0.1",
+        "redux-logger": "^3.0.6",
+        "typescript": "^3.8.2"
+      },
+      "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "coverage": "CI=true react-scripts test --coverage",
+        "eject": "react-scripts eject",
+        "electron": "set ELECTRON_ENABLE_LOGGING=true && electron client.js --debug &",
+        "package": "node_modules/.bin/electron-packager build abc-ts  --electronVersion=1.7.5 --platform=darwin   --out=releases  --overwrite "
+      },
+      "devDependencies": {
+        "@types/jest": "24.0.23",
+        "@types/node": "12.12.14",
+        "@types/react": "^16.9.17",
+        "@types/react-dom": "16.9.4",
+        "@types/react-redux": "^7.1.7",
+        "@types/react-router-dom": "^5.1.3",
+        "@typescript-eslint/eslint-plugin": "^2.10.0",
+        "babel-plugin-add-module-exports": "^1.0.2",
+        "babel-plugin-transform-typescript-metadata": "^0.3.0",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.14.0",
+        "enzyme-to-json": "^3.3.4",
+        "husky": "^2.3.0",
+        "jest-fetch-mock": "^2.1.2",
+        "lint-staged": "8.0.0",
+        "prettier": "^1.14.3",
+        "pretty-quick": "^1.4.1",
+        "react-intl": "^4.3.1"
+      },
+      "browserslist": {
+        "production": [
+          ">0.2%",
+          "not dead",
+          "not op_mini all"
+        ],
+        "development": [
+          "last 1 chrome version",
+          "last 1 firefox version",
+          "last 1 safari version"
+        ]
+      },
+      "module": "dist/cjs/index.js",
+      "main": "dist/cjs/index.js",
+      "files": [
+        "dist",
+        "public",
+        "src",
+        "README.md"
+      ],
+      "config": {
+        "API_SERVER": "/",
+        "MOCK_SERVER": "/mock"
+      }
+    },
+    "prefix": "/Users/jaxchow/workspace/mcf/abc-ts"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "stage": "resolution_started"
+  },
+  "4 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@types/react-dom/16.9.4",
+    "wanted": {
+      "name": "@types/react-dom",
+      "rawSpec": "16.9.4"
+    }
+  },
+  "5 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/react-dom/16.9.4",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "resolved"
+  },
+  "6 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/lint-staged/8.0.0",
+    "wanted": {
+      "name": "lint-staged",
+      "rawSpec": "8.0.0"
+    }
+  },
+  "7 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/lint-staged/8.0.0",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "resolved"
+  },
+  "8 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@types/node/12.12.14",
+    "wanted": {
+      "name": "@types/node",
+      "rawSpec": "12.12.14"
+    }
+  },
+  "9 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/node/12.12.14",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "resolved"
+  },
+  "10 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/react-dom/16.9.4",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "found_in_store"
+  },
+  "11 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/lint-staged/8.0.0",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "found_in_store"
+  },
+  "12 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/prettier/1.19.1",
+    "wanted": {
+      "name": "prettier",
+      "rawSpec": "^1.14.3"
+    }
+  },
+  "13 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/prettier/1.19.1",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "resolved"
+  },
+  "14 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@types/react-router-dom/5.1.4",
+    "wanted": {
+      "name": "@types/react-router-dom",
+      "rawSpec": "^5.1.3"
+    }
+  },
+  "15 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/react-router-dom/5.1.4",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "resolved"
+  },
+  "16 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/react-router-dom/5.1.4",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "found_in_store"
+  },
+  "17 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/prettier/1.19.1",
+    "requester": "/Users/jaxchow/workspace/mcf/abc-ts",
+    "status": "found_in_store"
+  },
+  "18 error pnpm": {
+    "message": {
+      "code": "ERR_PNPM_REGISTRY_META_RESPONSE_404",
+      "package": "@mcf/core",
+      "response": {
+        "size": 0,
+        "timeout": 0
+      },
+      "uri": "https://registry.npmjs.org/@mcf%2Fcore"
+    },
+    "err": {
+      "name": "Error",
+      "message": "404 Not Found: @mcf/core (via https://registry.npmjs.org/@mcf%2Fcore)",
+      "code": "ERR_PNPM_REGISTRY_META_RESPONSE_404",
+      "stack": "Error: 404 Not Found: @mcf/core (via https://registry.npmjs.org/@mcf%2Fcore)\n    at fromRegistry (/usr/local/lib/node_modules/pnpm/lib/node_modules/@pnpm/npm-resolver/lib/pickPackage.js:101:15)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)\n    at async exports.default (/usr/local/lib/node_modules/pnpm/lib/node_modules/@pnpm/npm-resolver/lib/pickPackage.js:64:22)\n    at async resolveNpm (/usr/local/lib/node_modules/pnpm/lib/node_modules/@pnpm/npm-resolver/lib/index.js:88:22)\n    at async Object.resolve (/usr/local/lib/node_modules/pnpm/lib/node_modules/@pnpm/default-resolver/lib/index.js:11:28)\n    at async run (/usr/local/lib/node_modules/pnpm/lib/node_modules/p-queue/dist/index.js:255:29)"
+    }
+  }
+}

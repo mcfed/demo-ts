@@ -1,39 +1,20 @@
-import {ORMModel} from '@mcf/core'
+import { ORMModel } from "@mcf/core";
+import { IModel } from "interface";
 
-const { attr, BaseModel, Model, fieldSetAttr } = ORMModel;
-export const namespace:string = "Abcd"
+const { attr, BaseModel, pk } = ORMModel;
 
-// export default class Abcd extends BaseModel {
-//   static modelName = namespace
-//   static fields={}
-//   static options={
-//     // idAttribute: 'serverId',
-//   }
-// }
+export const namespace = "Abcd";
 
-
-//   // console.log(Schedule.fields)
-// Object.assign(Abcd.fields, BaseModel.fields, {
-//   name: attr(),
-//   title: attr()
-// });
-
-
-interface Prop{
-  id:number
-  name:string
-  title:string
-}
-
-@Model()
-class Abcd extends BaseModel {
-  static modelName: string = "Abcd";
-  @fieldSetAttr()
+export default class Abcd extends BaseModel implements IModel {
+  static modelName: string = namespace;
+  @attr()
   id!: number;
-  @fieldSetAttr()
+  @pk()
   name!: string;
-  @fieldSetAttr()
+  @attr()
   title!: string;
-}
+  
+  getName(){
 
-export default Abcd
+  }
+}
