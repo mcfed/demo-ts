@@ -1454,10 +1454,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@mcf/core@^0.4.0-rc1":
-  version "0.4.0-rc1"
-  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.0-rc1.tgz#087fb36a47708bb31a4ed301f8ed9cc933c353db"
-  integrity sha512-v/gpQmBPYLZYfL3ui5md/c5YNQXGwQnKdroSW31gS9FgDosiJSByzGJnHSpYbGNOfBV09JAEjeVipP7vaTu6CQ==
+"@mcf/core@^0.4.0-rc2":
+  version "0.4.0-rc2"
+  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.0-rc2.tgz#d8c30a7bc12909f6def1d6f4a5500eeb2337b274"
+  integrity sha512-97q2el2to5VYznCasCZOc/Kr/UJf5LlEV/tEt2h5Fp2rHPIwM9UZXXyUy/aI/ZTo0oYh1ODQLRXl1R3e+R4XqQ==
   dependencies:
     core-decorators "^0.20.0"
     history "^4.10.1"

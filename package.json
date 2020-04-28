@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-    "@mcf/core": "^0.4.0-rc1",
+    "@mcf/core": "^0.4.0-rc2",
     "@mcf/crud": "^0.5.0-rc1",
     "@mcf/react-scripts": "0.3.5",
     "@mcf/utils": "^0.2.0-rc4",
