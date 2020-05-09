@@ -18,10 +18,10 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "baseUrl": "./src",
+    "noEmit": true
   },
   "include": [
-    "src", "types/react-app-env.d.ts"
+    "src",
+    "types/react-app-env.d.ts", "src/App.tsx"
   ]
 }

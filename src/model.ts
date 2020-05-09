@@ -1,5 +1,5 @@
 import { ORMModel } from "@mcf/core";
-import { IModel } from "interface";
+import { IModel } from "./interface";
 
 const { attr, BaseModel, pk } = ORMModel;
 

@@ -1,5 +1,5 @@
-import * as Containers from './container';
 import { RouteProps } from 'react-router';
+import * as Containers from './container';
 function routes(props:RouteProps):Array<RouteProps>{
   const path:any = props.path
   return [{
@@ -7,13 +7,13 @@ function routes(props:RouteProps):Array<RouteProps>{
     exact:true,
     component:Containers.ListContainer
   },{
-    path:`${path}/add`,
+    path:`${path}add`,
     component:Containers.FormContainer
   },{
-    path:`${path}/:id/edit`,
+    path:`${path}:id/edit`,
     component:Containers.FormContainer
   },{
-    path:`${path}/:id`,
+    path:`${path}:id`,
     component:Containers.DetailContainer
   }]
 }

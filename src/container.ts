@@ -1,4 +1,4 @@
-import { injectIntl } from "react-intl";
+import { injectIntl, defineMessages } from "react-intl";
 import { connect } from "react-redux";
 import { Selector, Container, InjectFactory } from "@mcf/core";
 import { CarAction } from "./action";
@@ -9,22 +9,17 @@ import messages from "./locales";
 import { namespace } from "./model";
 
 const { defaultMergeProps } = Container;
-const { reducerItemSelector, reducerListSelector } = Selector;
-
+const { reducerItemSelector, reducerListSelector,fetchingSelector,appSelector,reducerSelector } = Selector;
 export const mapStateToProps = (state: any, props: any) => {
   return {
     intl: props.intl,
     actions: InjectFactory.Factory(CarAction),
-    appReducer: state.appReducer,
-    fetchingReducer: state.fetchingReducer,
-    reducer: state[namespace],
-    messages: messages,
-    items: reducerListSelector(state.ORMReducer, namespace),
-    item: reducerItemSelector(
-      state.ORMReducer,
-      namespace,
-      props.match.params.id
-    ),
+    appReducer: appSelector(state),
+    fetchingReducer: fetchingSelector(state),
+    reducer: reducerSelector(state,namespace),
+    messages: defineMessages(messages),
+    items: reducerListSelector(state, namespace),
+    item: reducerItemSelector(state, namespace, props.match.params.id),
   };
 };
 export const ListContainer = injectIntl(

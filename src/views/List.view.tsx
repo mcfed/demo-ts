@@ -1,10 +1,9 @@
 import React, { ReactNode } from "react";
 import { Button, Input, Select } from "antd";
-//@ts-ignore
-import { ButtonGroups, AdvancedSearch, DataTable, Panel } from "mcf-components";
+import { ButtonGroups, AdvancedSearch, DataTable, Panel } from "@mcf/components";
 import { IRListProps, IRListState, IParams, PK, RListPage } from "@mcf/crud";
 import { TableProps } from "antd/lib/table/interface";
-import { ICarAction, IReducerState, IModel } from "interface";
+import { ICarAction, IReducerState, IModel } from "../interface";
 import Model from '../model'
 
 interface ListProps<M> extends IRListProps {
@@ -69,11 +68,8 @@ export default class ListView<M extends Model> extends RListPage<
         filterSubmitHandler={this.handleFilter.bind(this)}
       >
         <Input
-          //@ts-ignore
-          label={locale("serverName.label")}
           name="serverName"
-          //@ts-ignore
-          defaultValue={query.nickname}
+          defaultValue={query.name}
         />
       </AdvancedSearch>
     );
@@ -82,7 +78,7 @@ export default class ListView<M extends Model> extends RListPage<
     return (
       <Panel footer={false}>
         {this.renderSearchForm()}
-        {/* {this.renderToolbar()} */}
+        {this.renderToolbar()}
         {this.renderDataTable()}
       </Panel>
     );
@@ -99,6 +95,7 @@ export default class ListView<M extends Model> extends RListPage<
           this.handlerMenu.bind(selectedRowKeys, actionType)
         }
       >
+
         <Button type="primary">{locale("GLOBAL.NEW")} </Button>
         <Button /* loading={spins(actions.fetchDelete)} */>
           {locale("GLOBAL.REMOVE")}

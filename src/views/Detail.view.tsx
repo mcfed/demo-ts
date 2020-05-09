@@ -1,8 +1,7 @@
 import React, { ReactNode } from "react";
 import { Button } from "antd";
-//@ts-ignore
-import { DetailTable, Panel } from "mcf-components";
-import { IRFormProps, IRFormState, IProps, IState } from "@mcf/crud";
+import { DetailTable, Panel } from "@mcf/components";
+import { IRFormProps, IRFormState} from "@mcf/crud";
 import { RFormPage } from "@mcf/crud";
 import Model from "../model";
 
@@ -11,7 +10,6 @@ interface FormProps<M extends Model> extends IRFormProps {
   querys: Function;
   spins: Function;
   reducer: Object;
-  //item:SessionBoundModel<M>
   item:any
 }
 
@@ -31,17 +29,13 @@ export default class DetailView<M extends Model> extends RFormPage<FormProps<M>,
   }
 
   handleCancel(values: object): void {
-    //@ts-ignore
     this.goBack();
   }
   renderPanelFooter(): ReactNode {
     const { locale } = this.props;
 
     return (
-      <Button
-        type="primary"
-        onClick={this.handleCancel.bind(this, ["handleCancel"])}
-      >
+      <Button type="primary" onClick={this.handleCancel.bind(this, ["handleCancel"])} >
         {locale("GLOBAL.BACK")}
       </Button>
     );
@@ -60,8 +54,9 @@ export default class DetailView<M extends Model> extends RFormPage<FormProps<M>,
     ];
 
     return (
-      <Panel title={locale("GLOBAL.DETAIL")} footer={this.renderPanelFooter}>
+      <Panel title={locale("GLOBAL.DETAIL")} footer={this.renderPanelFooter.bind(this)}>
         <DetailTable
+          mode="array"
           title={locale("baseInfo.title")}
           dataSource={source}
           labelKey="label"

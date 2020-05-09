@@ -1,4 +1,7 @@
-import {defineMessages} from 'react-intl';
+// import {defineMessages} from 'react-intl';
+function defineMessages(locale){
+    return locale
+}
 
 export default defineMessages({
   'title': {
