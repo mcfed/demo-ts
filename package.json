@@ -1,10 +1,11 @@
 {
   "name": "@capaa/demo-ts",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": false,
-  "main": "dist/cjs/index.js",
+  "main": "dist/umd/index.js",
   "module": "dist/cjs/index.js",
   "dependencies": {
+    "@capaa/demo-ts": "0.1.3",
     "@mcf/components": "0.0.1-beta5",
     "@mcf/core": "^0.4.0-rc3",
     "@mcf/crud": "0.4.0-rc6",
@@ -20,7 +21,7 @@
     "react-redux": "^5.1.2",
     "react-router": "^4.3.1",
     "react-router-config": "^4.3.1",
-    "react-router-dom": "^4.4.0-beta.8",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "typescript": "^3.8.3"
@@ -28,7 +29,10 @@
   "scripts": {
     "analyze": "source-map-explorer build/static/js/*.*",
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build:cjs": "MODE=cjs react-app-rewired build",
+    "build:umd": "MODE=umd react-app-rewired build",
+    "build:build": "react-app-rewired build",
+    "build": "npm run build:build && npm run build:cjs && npm run build:umd",
     "test": "react-app-rewired test",
     "coverage": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
@@ -72,8 +76,7 @@
   },
   "files": [
     "dist",
-    "public",
-    "src",
+    "build",
     "README.md"
   ],
   "config": {
