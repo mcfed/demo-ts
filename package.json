@@ -1,6 +1,6 @@
 {
   "name": "@capaa/demo-ts",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/cjs/index.js",
@@ -21,7 +21,7 @@
     "react-redux": "^5.1.2",
     "react-router": "^4.3.1",
     "react-router-config": "^4.3.1",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^4.4.0-beta.8",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "typescript": "^3.8.3"
