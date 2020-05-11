@@ -1,11 +1,10 @@
 {
   "name": "@capaa/demo-ts",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/cjs/index.js",
   "dependencies": {
-    "@capaa/demo-ts": "0.1.3",
     "@mcf/components": "0.0.1-beta5",
     "@mcf/core": "^0.4.0-rc3",
     "@mcf/crud": "0.4.0-rc6",
