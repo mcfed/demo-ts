@@ -920,30 +920,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@capaa/demo-ts@0.1.3":
-  version "0.1.3"
-  resolved "http://nexus.mchz.com.cn:4873/@capaa%2fdemo-ts/-/demo-ts-0.1.3.tgz#90557126441655a986bbaecbf1a5e4a3e8930e9e"
-  dependencies:
-    "@mcf/components" "0.0.1-beta5"
-    "@mcf/core" "^0.4.0-rc3"
-    "@mcf/crud" "0.4.0-rc6"
-    "@mcf/utils" "^0.2.0-rc5"
-    "@types/redux-logger" "^3.0.7"
-    antd "3.5.3"
-    history "^4.10.1"
-    mcf-cra "0.0.11"
-    react "^16.13.1"
-    react-dom "^16.13.1"
-    react-hot-loader "^4.12.21"
-    react-intl "^4.5.3"
-    react-redux "^5.1.2"
-    react-router "^4.3.1"
-    react-router-config "^4.4.0-beta.8"
-    react-router-dom "^4.3.1"
-    redux "^4.0.5"
-    redux-logger "^3.0.6"
-    typescript "^3.8.3"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "http://nexus.mchz.com.cn:4873/@cnakazawa%2fwatch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -1172,21 +1148,9 @@
   optionalDependencies:
     antd "3.5.3"
 
-"@mcf/core@^0.4.0-rc3":
-  version "0.4.0-rc3"
-  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.0-rc3.tgz#137e590c7e575d26141c11c4599174be13b7b32c"
-  dependencies:
-    core-decorators "^0.20.0"
-    history "^4.10.1"
-    redux "^4.0.5"
-    redux-orm "0.12.4"
-    redux-saga "0.16.2"
-    reflect-metadata "^0.1.13"
-    reselect "^4.0.0"
-
-"@mcf/core@^0.4.1-rc2":
-  version "0.4.1-rc2"
-  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.1-rc2.tgz#d9b622d0a398bb9c414f71f11460c4af55596e32"
+"@mcf/core@^0.4.2-rc1":
+  version "0.4.2-rc1"
+  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.2-rc1.tgz#0097f7bd9779363ee77e105ea714d48d66b34f21"
   dependencies:
     core-decorators "^0.20.0"
     history "^4.10.1"
@@ -2453,7 +2417,7 @@ browserslist@4.10.0:
     node-releases "^1.1.52"
     pkg-up "^3.1.0"
 
-browserslist@^4.0.0, browserslist@^4.11.1, browserslist@^4.6.2, browserslist@^4.6.4, browserslist@^4.8.5, browserslist@^4.9.1:
+browserslist@^4.0.0, browserslist@^4.11.1, browserslist@^4.6.4, browserslist@^4.8.5, browserslist@^4.9.1:
   version "4.12.0"
   resolved "http://nexus.mchz.com.cn:4873/browserslist/-/browserslist-4.12.0.tgz#06c6d5715a1ede6c51fc39ff67fd647f740b656d"
   dependencies:
@@ -8353,7 +8317,15 @@ postcss@7.0.21:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^7, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.23, postcss@^7.0.27, postcss@^7.0.5, postcss@^7.0.6:
+postcss@^7:
+  version "7.0.30"
+  resolved "http://nexus.mchz.com.cn:4873/postcss/-/postcss-7.0.30.tgz#cc9378beffe46a02cbc4506a0477d05fcea9a8e2"
+  dependencies:
+    chalk "^2.4.2"
+    source-map "^0.6.1"
+    supports-color "^6.1.0"
+
+postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.23, postcss@^7.0.27, postcss@^7.0.5, postcss@^7.0.6:
   version "7.0.29"
   resolved "http://nexus.mchz.com.cn:4873/postcss/-/postcss-7.0.29.tgz#d3a903872bd52280b83bce38cdc83ce55c06129e"
   dependencies:
@@ -9750,9 +9722,9 @@ sane@^4.0.3:
     minimist "^1.1.1"
     walker "~1.0.5"
 
-sanitize.css@^10.0.0:
-  version "10.0.0"
-  resolved "http://nexus.mchz.com.cn:4873/sanitize.css/-/sanitize.css-10.0.0.tgz#b5cb2547e96d8629a60947544665243b1dc3657a"
+sanitize.css@^11.0.0:
+  version "11.0.0"
+  resolved "http://nexus.mchz.com.cn:4873/sanitize.css/-/sanitize.css-11.0.0.tgz#29bb394c0543616f31cd8c58fcba8323a60e2ef6"
 
 sass-loader@8.0.2:
   version "8.0.2"

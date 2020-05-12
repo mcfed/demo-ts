@@ -4,7 +4,6 @@ import { ICarAction } from "./interface";
 import Api from "./api";
 import Reducer from "./reducer";
 import {message} from 'antd'
-import {showError,showSuccess} from './redux-message'
 
 const { Injectable } = InjectFactory;
 
@@ -17,9 +16,9 @@ class CarAction implements ICarAction {
   async fetchDelete(ids: PK) {
     const data = await this.api.fetchDelete({id:ids});
     if(data && data.code === 0){
-      showSuccess('请求成功！')
+      message.success('请求成功！')
     }else{
-      showError('请求失败！')
+      message.error('请求失败！')
     }
   }
   stop(payload: { a: string; b: number }) {
@@ -42,10 +41,10 @@ class CarAction implements ICarAction {
     const data = await this.api.fetchList();
     if(data && data.code === 0){
       console.log(this)
-      this.reducer.savePage({payload:data})
-      showSuccess('请求成功！')
+      this.reducer.savePage({payload:data.data})
+      message.success('请求成功！')
     }else{
-      showError('请求失败！')
+      message.error('请求失败！')
     }
   }
 

@@ -5,6 +5,7 @@
   "main": "dist/umd/index.js",
   "module": "dist/cjs/index.js",
   "dependencies": {
+    "@csstools/normalize.css": "^10.1.0",
     "@mcf/components": "0.0.1-beta5",
     "@mcf/core": "^0.4.2-rc1",
     "@mcf/crud": "0.4.0-rc6",
@@ -13,6 +14,7 @@
     "antd": "3.5.3",
     "history": "^4.10.1",
     "mcf-cra": "0.0.11",
+    "postcss-browser-comments": "^3.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
@@ -23,6 +25,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
+    "sanitize.css": "^11.0.0",
     "typescript": "^3.8.3"
   },
   "scripts": {

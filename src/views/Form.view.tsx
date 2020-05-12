@@ -18,6 +18,7 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
   componentDidMount(): void {
     const { actions } = this.props;
     const params: IParams<M> = this.props.match.params;
+    console.log(this)
     if (params.id) {
       actions.fetchItem({ id: params.id });
     }

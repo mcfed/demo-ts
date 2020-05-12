@@ -16,7 +16,6 @@ export default class CarReducer implements ICarReducer {
    * 保存list页面分页信息容错
    */
   savePage({ payload }:any) {
-    console.log('11')
     const pageSize = payload.pageSize || payload.end + 1 - payload.start;
     return {
       page: {
