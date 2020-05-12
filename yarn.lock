@@ -1280,23 +1280,24 @@
   optionalDependencies:
     antd "3.5.3"
 
-"@mcf/core@^0.4.0-rc3":
-  version "0.4.0-rc3"
-  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.0-rc3.tgz#137e590c7e575d26141c11c4599174be13b7b32c"
-  integrity sha512-OYYaeT8Usfgb+0kxgQxpmUO0xXMU47CH4zcBQl03vCUmNOFimVMjkNetnQxLNWPpBjVT7xfhL0rEPxbmL1Spvw==
+"@mcf/core@^0.4.2-rc1":
+  version "0.4.2-rc1"
+  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.2-rc1.tgz#0097f7bd9779363ee77e105ea714d48d66b34f21"
+  integrity sha512-Ea6q70aVH227DcqiecXGvsfjNMIl+T3N3NT+R2Bir4WbNvJbsBb+TsDNBK6EG1SlFKv4LSXv6TippB4WhhCYoQ==
   dependencies:
     core-decorators "^0.20.0"
     history "^4.10.1"
+    react-intl "^4.5.3"
     redux "^4.0.5"
     redux-orm "0.12.4"
     redux-saga "0.16.2"
     reflect-metadata "^0.1.13"
     reselect "^4.0.0"
 
-"@mcf/crud@0.4.0-rc6":
-  version "0.4.0-rc6"
-  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcrud/-/crud-0.4.0-rc6.tgz#16da35996b3d2488484aef13abb19afc7c6110e6"
-  integrity sha512-IBS2ezLg0mR+p5xa8paGj7/8PXEGF1hU6whmIQ5BfS8OK0gT9W5Tf8JsA/W1yZgvJYqcY8KvsZ9Mn1wBOe1NTw==
+"@mcf/crud@0.4.1-rc1":
+  version "0.4.1-rc1"
+  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcrud/-/crud-0.4.1-rc1.tgz#0bd7251d3ab6c91865981366565db223c5fb4459"
+  integrity sha512-pX5B4AoltlpM5XoFpoOP4xE0k+ir8Pkf5Bu8FAWuc+z4AOkBUv1HNtMNO0m1lnCj8OmmMkzvxOXfoRXRyZeX5Q==
   dependencies:
     react "^16.13.1"
     react-dom "^16.13.1"
@@ -2468,6 +2469,13 @@ babel-plugin-transform-runtime@^6.23.0:
   integrity sha1-iEkNRGUC6puOfvsP4J7E2ZR5se4=
   dependencies:
     babel-runtime "^6.22.0"
+
+babel-plugin-transform-typescript-metadata@^0.3.0:
+  version "0.3.0"
+  resolved "http://nexus.mchz.com.cn:4873/babel-plugin-transform-typescript-metadata/-/babel-plugin-transform-typescript-metadata-0.3.0.tgz#70093ea8611baf985293fb3ec704d1b7db737ad9"
+  integrity sha512-ASYrM+bxtpfgZKsAOqQfjmLlekIDigRnNCfQBDOOdaqL18hLhZIsbdiHsuaNDTkljlqnbV/DlufaWY55jC2PBg==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
 
 babel-preset-jest@^24.9.0:
   version "24.9.0"
