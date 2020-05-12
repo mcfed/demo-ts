@@ -2,6 +2,7 @@ const {
   override,
   disableChunk,
   fixBabelImports,
+  addBabelPlugin,
   addWebpackExternals,
   addExternalBabelPlugin 
 } = require("customize-cra");
@@ -21,21 +22,7 @@ const fixExternalBabelImports = (libraryName, options) =>
   ]);
 
 module.exports = override(
+  addBabelPlugin("babel-plugin-transform-typescript-metadata"),
   customBuildConfig(),
-  customEntryConfig(),
-  fixBabelImports('antd', {
-    libraryName: 'antd',
-    libraryDirectory: 'es',
-    style: true,//自动打包相关的样式 默认为 style:'css'
-  }),
-  // fixExternalBabelImports('antd', {
-  //   libraryName: 'antd',
-  //   libraryDirectory: 'es',
-  //   style: true,//自动打包相关的样式 默认为 style:'css'
-  // }),
-  fixBabelImports('@mcf/component', {
-    libraryName: '@mcf/components',
-    libraryDirectory: 'lib',
-    camel2DashComponentName: false
-  }),
+  customEntryConfig()
 )
