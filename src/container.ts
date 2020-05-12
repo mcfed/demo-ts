@@ -11,13 +11,7 @@ import { Dispatch } from "redux";
 
 const { defaultMergeProps } = Container;
 const { reducerItemSelector, reducerListSelector, fetchingSelector } = Selector;
-const store = {
-  getState: function () {},
-  dispatch: function (type: string) {
-    console.log(type);
-    return type;
-  },
-};
+
 export const mapStateToProps = (state: any, props: any) => {
   return {
     intl: props.intl,
