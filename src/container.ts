@@ -11,6 +11,7 @@ import { namespace } from "./model";
 const { defaultMergeProps } = Container;
 const { reducerItemSelector, reducerListSelector,fetchingSelector,appSelector,reducerSelector } = Selector;
 export const mapStateToProps = (state: any, props: any) => {
+  console.log(reducerListSelector(state, namespace))
   return {
     intl: props.intl,
     actions: InjectFactory.Factory(CarAction),
@@ -19,6 +20,19 @@ export const mapStateToProps = (state: any, props: any) => {
     reducer: reducerSelector(state,namespace),
     messages: defineMessages(messages),
     items: reducerListSelector(state, namespace),
+    // items: [{
+    //   id: 1,
+    //   label: 'label1',
+    //   name: 'name1'
+    // },{
+    //   id: 2,
+    //   label: 'label2',
+    //   name: 'name2'
+    // },{
+    //   id: 3,
+    //   label: 'label3',
+    //   name: 'name3'
+    // }],
     item: reducerItemSelector(state, namespace, props.match.params.id),
   };
 };

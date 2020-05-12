@@ -1,10 +1,39 @@
 import React, { ReactNode } from "react";
 import { Button, Input, Select } from "antd";
-import { ButtonGroups, AdvancedSearch, DataTable, Panel } from "@mcf/components";
+import {
+  ButtonGroups,
+  AdvancedSearch,
+  DataTable,
+  Panel,
+} from "@mcf/components";
 import { IRListProps, IRListState, IParams, PK, RListPage } from "@mcf/crud";
 import { TableProps } from "antd/lib/table/interface";
 import { ICarAction, IReducerState, IModel } from "../interface";
-import Model from '../model'
+import Model from "../model";
+
+
+//扩展Button
+import {ButtonProps} from 'antd/lib/button'; 
+
+interface MyButtonProps { 
+    [propName: string]: any;
+    actionkey?:string;
+    permission?:boolean;
+    confirm?:string;
+    confirmTitle?:string;
+    tip?:string;
+    disabled?:boolean;
+    icon?:string;
+    children: any[]; 
+    type?: string; 
+} 
+
+const MyButton: React.FC<MyButtonProps & ButtonProps> = (props : MyButtonProps & ButtonProps) => {
+    return <Button {...props} />  
+}
+
+
+
 
 interface ListProps<M> extends IRListProps {
   actions: ICarAction;
@@ -25,21 +54,23 @@ export default class ListView<M extends Model> extends RListPage<
   componentDidMount(): void {
     this.handleFilter(this.searchParams());
   }
-  handleFilter(value: Object) {
+  handleFilter(value: Object):void {
     const {
       actions,
       match: { params },
     } = this.props;
     actions.fetchPage(Object.assign({}, value, params));
   }
+  
   searchParams(): object {
     const { actions, querys } = this.props;
     const defaultParams: Object = {};
 
-    // return Object.assign(defaultParams, querys("actions.fetchPage"));
-    return { a: 1 };
+    return Object.assign(defaultParams, querys(actions.fetchPage));
+    // return { a: 1 };
   }
-  handlerMenu(rowkeys: string, actionType: string): void {
+  // handlerMenu = (rowkeys: PK[], actionType: string): void => {
+  handlerMenu(rowkeys: any, actionType: string): void {
     const { actions } = this.props;
     if (actionType === "add") {
       this.goAdd();
@@ -67,20 +98,8 @@ export default class ListView<M extends Model> extends RListPage<
         /*loading={spins("actions.fetchList")}  */
         filterSubmitHandler={this.handleFilter.bind(this)}
       >
-        <Input
-          name="serverName"
-          defaultValue={query.name}
-        />
+        <Input name="serverName" defaultValue={query.name} />
       </AdvancedSearch>
-    );
-  }
-  render(): ReactNode {
-    return (
-      <Panel footer={false}>
-        {this.renderSearchForm()}
-        {this.renderToolbar()}
-        {this.renderDataTable()}
-      </Panel>
     );
   }
 
@@ -88,18 +107,20 @@ export default class ListView<M extends Model> extends RListPage<
     const { selectedRowKeys } = this.state;
     this.state.selectedRows.map((it: M) => it.name);
     const { actions, locale } = this.props;
-
     return (
-      <ButtonGroups
-        handleClick={(actionType: string) =>
-          this.handlerMenu.bind(selectedRowKeys, actionType)
-        }
-      >
-
-        <Button type="primary">{locale("GLOBAL.NEW")} </Button>
-        <Button /* loading={spins(actions.fetchDelete)} */>
+      <ButtonGroups handleClick={this.handlerMenu.bind(this, selectedRowKeys)}>
+        <MyButton
+          type="primary"
+          actionkey="add"
+        >
+          {locale("GLOBAL.NEW")}
+        </MyButton>
+        <MyButton
+          actionkey="delete"
+          /* loading={spins(actions.fetchDelete)} */
+        >
           {locale("GLOBAL.REMOVE")}
-        </Button>
+        </MyButton>
       </ButtonGroups>
     );
   }
@@ -107,14 +128,12 @@ export default class ListView<M extends Model> extends RListPage<
     const { locale } = this.props;
     return (
       <ButtonGroups
-        handleClick={(actionType: string) =>
-          this.handlerMenu(row.id.toString(), actionType)
-        }
+        handleClick={this.handlerMenu.bind(this, row.id)}
         size="small"
       >
-        <Button>{locale("GLOBAL.MODIFY")}</Button>
-        <Button>{locale("GLOBAL.DETAIL")}</Button>
-        <Button>{locale("GLOBAL.REMOVE")}</Button>
+        <MyButton actionkey="edit">{locale("GLOBAL.MODIFY")}</MyButton>
+        <MyButton actionkey="detail">{locale("GLOBAL.DETAIL")}</MyButton>
+        <MyButton actionkey="delete">{locale("GLOBAL.REMOVE")}</MyButton>
       </ButtonGroups>
     );
   }
@@ -126,7 +145,8 @@ export default class ListView<M extends Model> extends RListPage<
       spins,
       locale,
     } = this.props;
-    items.map((it:M)=>it.title)
+    console.log(this.props)
+    items.map((it: M) => it.title);
     let tableConf: TableProps<M> = {
       rowKey: "id",
       dataSource: items,
@@ -137,15 +157,30 @@ export default class ListView<M extends Model> extends RListPage<
           dataIndex: "label",
         },
         {
+          title: locale("name"),
+          key: "name",
+          dataIndex: "name",
+        },
+        {
           title: locale("GLOBAL.COLUMNS.OPTIONS"),
           key: "options",
           dataIndex: "options",
           width: 190,
-          render: this.renderTableButtonGroups,
+          render: this.renderTableButtonGroups.bind(this),
         },
       ],
     };
 
     return <DataTable {...tableConf} />;
+  }
+
+  render(): ReactNode {
+    return (
+      <Panel footer={false}>
+        {this.renderSearchForm()}
+        {this.renderToolbar()}
+        {this.renderDataTable()}
+      </Panel>
+    );
   }
 }

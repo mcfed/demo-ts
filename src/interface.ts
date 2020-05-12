@@ -7,7 +7,7 @@ export interface IModel{
 }
 
 export interface IAction {
-  fetchItem(): void;
+  // fetchItem(): void;
 }
 
 export interface IReducer{
@@ -26,11 +26,11 @@ export interface IReducerState{
   page:{
     pageSize:number,
     total:number
-  } 
+  }
 }
 
 export interface ICarReducer extends IReducer {
-  saveItem():Object
+  saveItem(data:any):Object
 }
 
 export interface ICarAction extends IAction {

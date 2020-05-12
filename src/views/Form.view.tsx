@@ -26,8 +26,9 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
   handleSubmit(values:Object): void {
     const { actions } = this.props;
     // this.state.value
-
-    actions.fetchSave(values);
+    console.log(values)
+    // actions.fetchSave(values);
+    actions.fetchSave({values,...{id: 2}});
   }
   handleCancel(values:Object): void {
     this.goBack();
@@ -44,8 +45,9 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
         onOk={this.onSubmit.bind(this, "handleSubmit")}
         onCancel={this.handleCancel.bind(this, "handleCancel")}
       >
-        //@ts-ignore
-        <BaseForm onSubmit={this.onSubmit.bind(this)}
+        <BaseForm 
+          //@ts-ignore
+          onSubmit={this.onSubmit.bind(this)}
           ref={this.saveFormRef.bind(this)}
         >
           <FormItem label="sdfs" >
