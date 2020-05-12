@@ -7,17 +7,25 @@ import FormView from "./views/Form.view";
 import DetailView from "./views/Detail.view";
 import messages from "./locales";
 import { namespace } from "./model";
+import { Dispatch } from "redux";
 
 const { defaultMergeProps } = Container;
-const { reducerItemSelector, reducerListSelector,fetchingSelector,appSelector,reducerSelector } = Selector;
+const { reducerItemSelector, reducerListSelector, fetchingSelector } = Selector;
+const store = {
+  getState: function () {},
+  dispatch: function (type: string) {
+    console.log(type);
+    return type;
+  },
+};
 export const mapStateToProps = (state: any, props: any) => {
   console.log(reducerListSelector(state, namespace))
   return {
     intl: props.intl,
-    actions: InjectFactory.Factory(CarAction),
-    appReducer: appSelector(state),
-    fetchingReducer: fetchingSelector(state),
-    reducer: reducerSelector(state,namespace),
+    //@ts-ignore
+    appReducer: state.appReducer,
+    fetchingReducer: state.fetchingReducer,
+    reducer: state[namespace],
     messages: defineMessages(messages),
     items: reducerListSelector(state, namespace),
     // items: [{
@@ -36,9 +44,15 @@ export const mapStateToProps = (state: any, props: any) => {
     item: reducerItemSelector(state, namespace, props.match.params.id),
   };
 };
+export const dispatchToProps = (dispatch: Dispatch, props: object) => {
+  return {
+    dispatch,
+    actions: InjectFactory.ActionFactory(CarAction, dispatch),
+  };
+};
 export const ListContainer = injectIntl(
   //@ts-ignore
-  connect(mapStateToProps, null, defaultMergeProps)(ListView)
+  connect(mapStateToProps, dispatchToProps, defaultMergeProps)(ListView)
 );
 
 export const FormContainer = injectIntl(
