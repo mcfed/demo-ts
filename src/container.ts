@@ -21,7 +21,6 @@ const store = {
 export const mapStateToProps = (state: any, props: any) => {
   return {
     intl: props.intl,
-    //@ts-ignore
     appReducer: state.appReducer,
     fetchingReducer: state.fetchingReducer,
     reducer: state[namespace],
@@ -37,15 +36,12 @@ export const dispatchToProps = (dispatch: Dispatch, props: object) => {
   };
 };
 export const ListContainer = injectIntl(
-  //@ts-ignore
   connect(mapStateToProps, dispatchToProps, defaultMergeProps)(ListView)
 );
 
 export const FormContainer = injectIntl(
-  //@ts-ignore
-  connect(mapStateToProps, null, defaultMergeProps)(FormView)
+  connect(mapStateToProps, dispatchToProps, defaultMergeProps)(FormView)
 );
 export const DetailContainer = injectIntl(
-  //@ts-ignore
-  connect(mapStateToProps, null, defaultMergeProps)(DetailView)
+  connect(mapStateToProps, dispatchToProps, defaultMergeProps)(DetailView)
 );
