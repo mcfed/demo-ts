@@ -26,7 +26,7 @@ export const mapStateToProps = (state: any, props: any) => {
 export const dispatchToProps = (dispatch: Dispatch, props: object) => {
   return {
     dispatch,
-    actions: InjectFactory.ActionFactory(CarAction, dispatch),
+    actions: InjectFactory.ActionFactory(CarAction, dispatch, namespace),
   };
 };
 export const ListContainer = injectIntl(

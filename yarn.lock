@@ -1280,10 +1280,10 @@
   optionalDependencies:
     antd "3.5.3"
 
-"@mcf/core@^0.4.2-rc1":
-  version "0.4.2-rc1"
-  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.2-rc1.tgz#0097f7bd9779363ee77e105ea714d48d66b34f21"
-  integrity sha512-Ea6q70aVH227DcqiecXGvsfjNMIl+T3N3NT+R2Bir4WbNvJbsBb+TsDNBK6EG1SlFKv4LSXv6TippB4WhhCYoQ==
+"@mcf/core@0.4.3-rc1":
+  version "0.4.3-rc1"
+  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.3-rc1.tgz#d7afc8e05809efc901572a21dab7ed6fa5b79e1a"
+  integrity sha512-gPNZwdwFIu9rSj0jx8f6AnSbriN3aqlhA9GA9AoFzJhiPikEyaKipzcLpQYJ3QMBWrYWHMoDoDTdQwlCrQ7+jQ==
   dependencies:
     core-decorators "^0.20.0"
     history "^4.10.1"
