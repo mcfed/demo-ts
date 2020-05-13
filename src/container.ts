@@ -11,18 +11,11 @@ import { Dispatch } from "redux";
 
 const { defaultMergeProps } = Container;
 const { reducerItemSelector, reducerListSelector, fetchingSelector } = Selector;
-const store = {
-  getState: function () {},
-  dispatch: function (type: string) {
-    console.log(type);
-    return type;
-  },
-};
+
 export const mapStateToProps = (state: any, props: any) => {
   console.log(reducerListSelector(state, namespace))
   return {
     intl: props.intl,
-
     appReducer: state.appReducer,
     fetchingReducer: state.fetchingReducer,
     reducer: state[namespace],
@@ -47,19 +40,16 @@ export const mapStateToProps = (state: any, props: any) => {
 export const dispatchToProps = (dispatch: Dispatch, props: object) => {
   return {
     dispatch,
-    actions: InjectFactory.ActionFactory(CarAction, dispatch),
+    actions: InjectFactory.ActionFactory(CarAction, dispatch, namespace),
   };
 };
 export const ListContainer = injectIntl(
-  //@ts-ignore
   connect(mapStateToProps, dispatchToProps, defaultMergeProps)(ListView)
 );
 
 export const FormContainer = injectIntl(
-  //@ts-ignore
-  connect(mapStateToProps, null, defaultMergeProps)(FormView)
+  connect(mapStateToProps, dispatchToProps, defaultMergeProps)(FormView)
 );
 export const DetailContainer = injectIntl(
-  //@ts-ignore
-  connect(mapStateToProps, null, defaultMergeProps)(DetailView)
+  connect(mapStateToProps, dispatchToProps, defaultMergeProps)(DetailView)
 );
