@@ -15,7 +15,7 @@ export default class CarReducer implements ICarReducer {
   /**
    * 保存list页面分页信息容错
    */
-  savePage({ payload }:any) {
+  savePage(payload:any) {
     const pageSize = payload.pageSize || payload.end + 1 - payload.start;
     return {
       page: {
@@ -45,8 +45,7 @@ export default class CarReducer implements ICarReducer {
    */
   saveItem({ payload }: any,state?:any) {
     return {
-      ...this.initalState,
-      item: payload,
+      ...state
     };
   }
 }

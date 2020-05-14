@@ -7,12 +7,10 @@ export const namespace = "Abcd";
 
 export default class Abcd extends BaseModel implements IModel {
   static modelName: string = namespace;
-  @attr()
-  id!: number;
   @pk()
+  id!: number;
+  @attr()
   name!: string;
   @attr()
   title!: string;
-
-  
 }

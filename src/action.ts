@@ -7,24 +7,24 @@ import {message} from 'antd'
 
 const { Injectable } = InjectFactory;
 
-// const api = new Api();
-// const reducer = new Reducer();
-
 @Injectable
 class CarAction implements ICarAction {
-  constructor(public readonly reducer: Reducer, public readonly api: Api) {}
+  constructor(public readonly reducer: Reducer, public readonly api: Api, public middleware: any) {}
+
   async fetchDelete(ids: PK) {
     const data = await this.api.fetchDelete({id:ids});
+    this.middleware.showError("sdfsfd")
     if(data && data.code === 0){
+      // this.fetchPage(this.params)
       message.success('请求成功！')
     }else{
       message.error('请求失败！')
     }
   }
+
   stop(payload: { a: string; b: number }) {
     console.log("stop", payload.a, payload.b);
   }
-
 
   async fetchItem(id:number) {
     const data = await this.api.fetchItem(id);
@@ -36,18 +36,16 @@ class CarAction implements ICarAction {
     }
   }
 
-
-  async fetchPage() {
-    const data = await this.api.fetchList();
+  async fetchPage(params:any) {
+    const data = await this.api.fetchList(params);
+    // this.params = params;
     if(data && data.code === 0){
-      console.log(this)
-      this.reducer.savePage({payload:data.data})
+      this.reducer.savePage(data.data)
       message.success('请求成功！')
     }else{
       message.error('请求失败！')
     }
   }
-
 
   async fetchSave(params:any) {
     const data = await this.api.fetchSave(params);
