@@ -10,15 +10,15 @@ import { namespace } from "./model";
 import { Dispatch } from "redux";
 
 const { defaultMergeProps } = Container;
-const { reducerItemSelector, reducerListSelector, fetchingSelector } = Selector;
+const { reducerItemSelector, reducerListSelector, fetchingSelector,reducerSelector,appSelector } = Selector;
 
 export const mapStateToProps = (state: any, props: any) => {
   return {
     intl: props.intl,
-    appReducer: state.appReducer,
-    fetchingReducer: state.fetchingReducer,
-    reducer: state[namespace],
     messages: defineMessages(messages),
+    appReducer: appSelector(state),
+    fetchingReducer: fetchingSelector(state),
+    reducer: reducerSelector(state, namespace),
     items: reducerListSelector(state, namespace),
     item: reducerItemSelector(state, namespace, props.match.params.id),
   };

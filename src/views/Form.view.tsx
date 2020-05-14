@@ -4,8 +4,10 @@ import { BaseForm, FormItem, Panel } from "@mcf/components";
 import { IRFormProps, IRFormState, IParams } from "@mcf/crud";
 import { RFormPage } from "@mcf/crud";
 import Model from '../model'
+import { ICarAction } from "../interface";
 
 interface FormProps<M extends Model> extends IRFormProps{
+  actions:ICarAction,
   reducer: Object;
   item:any
 }
@@ -19,7 +21,7 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
     const { actions } = this.props;
     const params: IParams<M> = this.props.match.params;
     if (params.id) {
-      actions.fetchItem({ id: params.id });
+      actions.fetchItem();
     }
   }
 
@@ -27,7 +29,7 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
     const { actions } = this.props;
     // this.state.value
 
-    actions.fetchSave(values);
+    // actions.fetchSave(values);
   }
   handleCancel(values:Object): void {
     this.goBack();
