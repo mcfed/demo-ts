@@ -109,14 +109,14 @@ export default class ListView<M extends Model> extends RListPage<
       >
         <Input
           name="serverName1"
-          //@ts-expect-error
+          //@ts-ignore
           label={locale("serverName1.label")}
           placeholder={locale("serverName1")}
           defaultValue={query.name}
         />
         <Input
           name="serverName2"
-          //@ts-expect-error
+          //@ts-ignore
           label={locale("serverName2.label")}
           placeholder={locale("serverName2")}
           defaultValue={query.name}
@@ -148,7 +148,7 @@ export default class ListView<M extends Model> extends RListPage<
     const { locale } = this.props;
     return (
       <ButtonGroups
-        //@ts-expect-error
+        //@ts-ignore
         handleClick={this.handlerMenu.bind(this, row.id1)}
         size="small"
       >
