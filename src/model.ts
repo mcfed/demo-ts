@@ -8,7 +8,6 @@ export const namespace = "Abcd";
 export default class Abcd extends BaseModel implements IModel {
   constructor(props: any) {
     super(props);
-    //@ts-ignore
     this.initFields(props);
   }
   static modelName: string = namespace;
