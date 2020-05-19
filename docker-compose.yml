@@ -6,5 +6,4 @@ services:
       - $PWD:/home/coder/project
     ports: 
       - 8080:20010
-    user: 
-      - $(id -u):$(id -g)
+    user: $(id -u):$(id -g)
