@@ -6,7 +6,7 @@ import { RFormPage } from "@mcf/crud";
 import Model from '../model'
 
 interface FormProps<M extends Model> extends IRFormProps{
-  reducer: Object;
+  reducer: any;
   item:any
 }
 
@@ -39,7 +39,7 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
   }
 
   render(): ReactNode {
-    const { item, actions, locale, spins } = this.props;
+    const { reducer:{item}, actions, locale, spins } = this.props;
     // const saveSpin = spins(actions.fetchSave);
     // const itemSpin = spins(actions.fetchItem);
     return (
@@ -55,10 +55,10 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
           ref={this.saveFormRef.bind(this)}
         >
           <FormItem label="sdfs" >
-            <Input type="hidden" name="id" defaultValue={item.id} />
+            <Input type="hidden" name="id" defaultValue={item && item.id} />
           </FormItem>
           <FormItem>
-            <Input name="{@name@}" defaultValue={item.name} />
+            <Input name="{@name@}" defaultValue={item && item.name} />
           </FormItem>
         </BaseForm>
       </Panel>
