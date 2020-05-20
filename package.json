@@ -7,11 +7,12 @@
   "dependencies": {
     "@csstools/normalize.css": "^10.1.0",
     "@mcf/components": "0.0.1-beta5",
-    "@mcf/core": "0.4.3-rc1",
+    "@mcf/core": "0.4.4-rc3",
     "@mcf/crud": "0.4.1-rc1",
     "@mcf/utils": "^0.2.0-rc5",
     "@types/redux-logger": "^3.0.7",
     "antd": "3.5.3",
+    "cypress": "^4.5.0",
     "history": "^4.10.1",
     "mcf-cra": "0.0.11",
     "postcss-browser-comments": "^3.0.0",
@@ -39,7 +40,9 @@
     "coverage": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
     "electron": "set ELECTRON_ENABLE_LOGGING=true && electron client.js --debug &",
-    "package": "node_modules/.bin/electron-packager build abc-ts  --electronVersion=1.7.5 --platform=darwin   --out=releases  --overwrite "
+    "package": "node_modules/.bin/electron-packager build abc-ts  --electronVersion=1.7.5 --platform=darwin   --out=releases  --overwrite ",
+    "cypress:open": "cypress open",
+    "cypress:headless": "cypress open --headless"
   },
   "devDependencies": {
     "@types/jest": "24.0.23",

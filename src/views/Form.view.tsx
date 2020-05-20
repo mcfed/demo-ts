@@ -18,7 +18,6 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
   componentDidMount(): void {
     const { actions } = this.props;
     const params: IParams<M> = this.props.match.params;
-    console.log(this)
     if (params.id) {
       actions.fetchItem({ id: params.id });
     }
@@ -26,10 +25,14 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
 
   handleSubmit(values:Object): void {
     const { actions } = this.props;
+    const params: IParams<M> = this.props.match.params;
     // this.state.value
-    console.log(values)
     // actions.fetchSave(values);
-    actions.fetchSave({values,...{id: 2}});
+    if (params.id) {
+      actions.fetchUpdate({values,...{id: params.id}});
+    }else{
+      actions.fetchSave({values});
+    }
   }
   handleCancel(values:Object): void {
     this.goBack();

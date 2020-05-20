@@ -101,7 +101,6 @@ export default class ListView<M extends Model> extends RListPage<
   renderSearchForm(): ReactNode {
     const { actions, spins, locale } = this.props;
     const query: IParams<M> = this.searchParams();
-    console.log(query);
     return (
       <AdvancedSearch
         /*loading={spins("actions.fetchList")}  */
@@ -149,7 +148,7 @@ export default class ListView<M extends Model> extends RListPage<
     return (
       <ButtonGroups
         //@ts-ignore
-        handleClick={this.handlerMenu.bind(this, row.id1)}
+        handleClick={this.handlerMenu.bind(this, row.id)}
         size="small"
       >
         <MyButton actionkey="edit">{locale("GLOBAL.MODIFY")}</MyButton>
@@ -168,18 +167,18 @@ export default class ListView<M extends Model> extends RListPage<
     } = this.props;
     console.log(this.props);
     let tableConf: TableProps<M> = {
-      rowKey: "id1",
+      rowKey: "id",
       dataSource: items,
       columns: [
         {
-          title: locale("id1"),
-          key: "id1",
-          dataIndex: "id1",
+          title: locale("id"),
+          key: "id",
+          dataIndex: "id",
         },
         {
           title: locale("name"),
-          key: "name1",
-          dataIndex: "name1",
+          key: "name",
+          dataIndex: "name",
         },
         {
           title: locale("GLOBAL.COLUMNS.OPTIONS"),

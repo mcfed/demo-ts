@@ -13,7 +13,6 @@ class CarAction implements ICarAction {
 
   async fetchDelete(ids: PK) {
     const data = await this.api.fetchDelete({id:ids});
-    this.middleware.showError("sdfsfd")
     if(data && data.code === 0){
       // this.fetchPage(this.params)
       message.success('请求成功！')
@@ -49,6 +48,16 @@ class CarAction implements ICarAction {
 
   async fetchSave(params:any) {
     const data = await this.api.fetchSave(params);
+    if(data && data.code === 0){
+      this.reducer.saveItem({payload:data})
+      message.success('请求成功！')
+    }else{
+      message.error('请求失败！')
+    }
+  }
+
+  async fetchUpdate(params:any) {
+    const data = await this.api.fetchUpdate(params);
     if(data && data.code === 0){
       this.reducer.saveItem({payload:data})
       message.success('请求成功！')

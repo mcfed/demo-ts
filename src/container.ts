@@ -13,7 +13,6 @@ const { defaultMergeProps } = Container;
 const { reducerItemSelector, reducerListSelector, fetchingSelector } = Selector;
 
 export const mapStateToProps = (state: any, props: any) => {
-  console.log(reducerListSelector(state, namespace))
   return {
     intl: props.intl,
     appReducer: state.appReducer,
