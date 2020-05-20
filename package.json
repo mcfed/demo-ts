@@ -42,7 +42,7 @@
     "electron": "set ELECTRON_ENABLE_LOGGING=true && electron client.js --debug &",
     "package": "node_modules/.bin/electron-packager build abc-ts  --electronVersion=1.7.5 --platform=darwin   --out=releases  --overwrite ",
     "cypress:open": "cypress open",
-    "cypress:headless": "cypress open --headless"
+    "cypress:headless": "cypress run --headless"
   },
   "devDependencies": {
     "@types/jest": "24.0.23",
