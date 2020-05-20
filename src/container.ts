@@ -19,8 +19,10 @@ export const mapStateToProps = (state: any, props: any) => {
     fetchingReducer: state.fetchingReducer,
     reducer: state[namespace],
     messages: defineMessages(messages),
-    items: reducerListSelector(state, namespace),
-    item: reducerItemSelector(state, namespace, props.match.params.id),
+    items: state[namespace].items,
+    item: state[namespace].item,
+    // items:reducerListSelector(state, namespace),
+    // item: reducerItemSelector(state, namespace, props.match.params.id),
   };
 };
 export const dispatchToProps = (dispatch: Dispatch, props: object) => {

@@ -1,15 +1,15 @@
 import { FetchUtils } from '@mcf/utils'; 
 import { IApi } from './interface';
 
-const API_PREFIX = ""
+const API_PREFIX = "mock/63/mock"
 export default class Api implements IApi{
   fetchList(params:any) {
-    return FetchUtils.fetchList(`${API_PREFIX}/api_prefix`, {
+    return FetchUtils.fetchList(`${API_PREFIX}/dbfirewall/sqlWhiteListSetting`, {
       body: params,
     });
   }
   fetchItem(params:any) {
-    return FetchUtils.fetchGet(`${API_PREFIX}/api_prefix/:id`, {
+    return FetchUtils.fetchGet(`${API_PREFIX}/dbfirewall/v2/sqlWhiteListSetting/byIds`, {
       body: params,
     });
   }

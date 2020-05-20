@@ -26,7 +26,8 @@ export interface IReducerState{
   page:{
     pageSize:number,
     total:number
-  } 
+  },
+  items:any
 }
 
 export interface ICarReducer extends IReducer {

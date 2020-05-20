@@ -104,17 +104,20 @@ export default class ListView<M extends Model> extends RListPage<
     );
   }
   renderTableButtonGroups(text: string, row: M): ReactNode {
-    const { locale } = this.props;
+    const { actions,locale,spins } = this.props;
     return (
       <ButtonGroups
         handleClick={(actionType: string) =>
-          this.handlerMenu(row.id.toString(), actionType)
+          this.handlerMenu(row.dbserverId.toString(), actionType)
         }
         size="small"
       >
         <Button>{locale("GLOBAL.MODIFY")}</Button>
-        <Button>{locale("GLOBAL.DETAIL")}</Button>
-        <Button>{locale("GLOBAL.REMOVE")}</Button>
+        {/* <Button actionkey='edit'
+          // loading={spins(actions)}
+          // disabled={this.selectMultiple()}
+          type='primary'>{locale("GLOBAL.DETAIL")}</Button> */}
+        {/* <Button>{locale("GLOBAL.REMOVE")}</Button> */}
       </ButtonGroups>
     );
   }
@@ -128,20 +131,25 @@ export default class ListView<M extends Model> extends RListPage<
     } = this.props;
     items.map((it:M)=>it.title)
     let tableConf: TableProps<M> = {
-      rowKey: "id",
+      rowKey: "dbserverId",
       dataSource: items,
       columns: [
         {
-          title: locale("label"),
-          key: "label",
-          dataIndex: "label",
+          title: locale("dbserverDisplayName"),
+          key: "dbserverDisplayName",
+          dataIndex: "dbserverDisplayName",
+        },
+        {
+          title: locale("dbserverIp"),
+          key: "dbserverIp",
+          dataIndex: "dbserverIp",
         },
         {
           title: locale("GLOBAL.COLUMNS.OPTIONS"),
           key: "options",
           dataIndex: "options",
           width: 190,
-          render: this.renderTableButtonGroups,
+          render: this.renderTableButtonGroups.bind(this),
         },
       ],
     };

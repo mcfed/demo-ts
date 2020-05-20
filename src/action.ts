@@ -15,11 +15,25 @@ class CarAction implements ICarAction {
   stop(payload: { a: string; b: number }) {
     console.log("stop", payload.a, payload.b);
   }
-  fetchItem() {
-    throw new Error("Method not implemented.");
+  async fetchItem() {
+    console.log("fetchItem");
+    const result = await this.api.fetchItem({});
+    if (result.code === 0) {
+      // this.reducer.saveItem(result.data);
+      console.log("ok")
+    }else{
+      console.log("error")
+    }  
   }
-  fetchPage() {
+  async fetchPage() {    
     console.log("fetchPage");
+    const result = await this.api.fetchList({aa:"a"});
+    if (result.code === 0) {
+      this.reducer.savePage(result.data);
+      console.log("ok")
+    }else{
+      console.log("error")
+    }
   }
 }
 

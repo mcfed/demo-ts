@@ -13,6 +13,8 @@ export default class Abcd extends BaseModel implements IModel {
   name!: string;
   @attr()
   title!: string;
+  @attr()
+  dbserverId!: number;
   
   getName(){
 
