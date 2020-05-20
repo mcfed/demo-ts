@@ -17,4 +17,8 @@ export default class Abcd extends BaseModel implements IModel {
   name!: string;
   @attr()
   title!: string;
+
+  getName(){
+    return this.name
+  }
 }

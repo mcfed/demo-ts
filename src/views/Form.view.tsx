@@ -4,14 +4,14 @@ import { BaseForm, FormItem, Panel } from "@mcf/components";
 import { IRFormProps, IRFormState, IParams } from "@mcf/crud";
 import { RFormPage } from "@mcf/crud";
 import Model from '../model'
+import { IReducerState } from "../interface";
 
-interface FormProps<M extends Model> extends IRFormProps{
-  reducer: any;
-  item:any
+interface FormProps<M> extends IRFormProps{
+  reducer: IReducerState;
+  item:M
 }
 
-interface FormState<M extends Model> extends IRFormState{
-  value: number;
+interface FormState<M> extends IRFormState{
 }
 
 export default class FormView< M extends Model> extends RFormPage<FormProps<M>, FormState<M>> {
@@ -39,9 +39,8 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
   }
 
   render(): ReactNode {
-    const { reducer:{item}, actions, locale, spins } = this.props;
-    // const saveSpin = spins(actions.fetchSave);
-    // const itemSpin = spins(actions.fetchItem);
+    const { item, actions, locale, spins, reducer } = this.props;
+    // reducer.page.total
     return (
       <Panel
         // confirmLoading={saveSpin}
@@ -55,10 +54,10 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
           ref={this.saveFormRef.bind(this)}
         >
           <FormItem label="sdfs" >
-            <Input type="hidden" name="id" defaultValue={item && item.id} />
+            <Input type="hidden" name="id" defaultValue={item.id} />
           </FormItem>
-          <FormItem>
-            <Input name="{@name@}" defaultValue={item && item.name} />
+          <FormItem label="name">
+            <Input name="name" defaultValue={item.name} />
           </FormItem>
         </BaseForm>
       </Panel>

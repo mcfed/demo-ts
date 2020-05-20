@@ -28,7 +28,7 @@ class CarAction implements ICarAction {
   async fetchItem(id:number) {
     const data = await this.api.fetchItem(id);
     if(data && data.code === 0){
-      this.reducer.saveItem({payload:data.data})
+      this.reducer.saveItem(data.data)
       message.success('请求成功！')
     }else{
       message.error('请求失败！')
@@ -49,7 +49,6 @@ class CarAction implements ICarAction {
   async fetchSave(params:any) {
     const data = await this.api.fetchSave(params);
     if(data && data.code === 0){
-      this.reducer.saveItem({payload:data})
       message.success('请求成功！')
     }else{
       message.error('请求失败！')
@@ -59,7 +58,6 @@ class CarAction implements ICarAction {
   async fetchUpdate(params:any) {
     const data = await this.api.fetchUpdate(params);
     if(data && data.code === 0){
-      this.reducer.saveItem({payload:data})
       message.success('请求成功！')
     }else{
       message.error('请求失败！')

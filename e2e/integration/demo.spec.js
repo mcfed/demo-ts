@@ -25,6 +25,7 @@ context("Actions", () => {
     cy.get("button[actionkey='add']").should("contain", "新 增");
     cy.get("button[actionkey='delete']").should("contain", "删 除");
   });
+
   it("route", () => {
     cy.hash().should("eq", `#/${namespace}`);
     cy.location().should((location) => {
@@ -32,17 +33,31 @@ context("Actions", () => {
     });
     cy.get("button[actionkey='add']").click();
     cy.hash().should("eq", `#/${namespace}/add`);
-    cy.get("input[name='{@name@}']").should("have.value", "");
-    cy.get("input[name='{@name@}']").type('name').then(() => {
-      cy.get("input[name='{@name@}']").should("have.value", "name");
-    });
+    cy.get("input[name='name']").should("have.value", "");
+    cy.get("input[name='name']")
+      .type("name")
+      .then(() => {
+        cy.get("input[name='name']").should("have.value", "name");
+      });
 
-    cy.get('.ant-panel-footer button').first().as('submitBtn')
-    cy.get('.ant-panel-footer button').last().as('cancelBtn')
-    cy.get('@cancelBtn').click().then(() => {
-      cy.hash().should("eq", `#/${namespace}`);
-    })
+    cy.get(".ant-panel-footer button")
+      .first()
+      .as("submitBtn");
+    cy.get(".ant-panel-footer button")
+      .last()
+      .as("cancelBtn");
+    cy.get("@cancelBtn")
+      .click()
+      .then(() => {
+        cy.hash().should("eq", `#/${namespace}`);
+      });
+  });
 
-    
+  it("btn", () => {
+    cy.get("button[actionkey='delete']").should("be.disabled");
+    cy.get("input[type='checkbox']")
+      .first()
+      .click();
+    cy.get("button[actionkey='delete']").should("not.be.disabled");
   });
 });

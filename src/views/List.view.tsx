@@ -146,9 +146,7 @@ export default class ListView<M extends Model> extends RListPage<
   renderTableButtonGroups(text: string, row: M): ReactNode {
     const { locale } = this.props;
     return (
-      <ButtonGroups
-        //@ts-ignore
-        handleClick={this.handlerMenu.bind(this, row.id)}
+      <ButtonGroups handleClick={this.handlerMenu.bind(this, row.id)}
         size="small"
       >
         <MyButton actionkey="edit">{locale("GLOBAL.MODIFY")}</MyButton>

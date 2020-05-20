@@ -43,9 +43,7 @@ export default class CarReducer implements ICarReducer {
   /**
    * 保存item
    */
-    saveItem({payload}:{payload:any}) {
-      return {
-        item:payload
-      }
+    saveItem(payload:any) {
+      return {}
     }
 }
