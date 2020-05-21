@@ -1,37 +1,44 @@
 import React, { ReactNode } from "react";
-import { Input } from "antd";
+import { Input, Select } from "antd";
 import { BaseForm, FormItem, Panel } from "@mcf/components";
 import { IRFormProps, IRFormState, IParams } from "@mcf/crud";
 import { RFormPage } from "@mcf/crud";
-import Model from '../model'
+import Model from "../model";
 import { ICarAction } from "../interface";
 
-interface FormProps<M extends Model> extends IRFormProps{
-  actions:ICarAction,
+interface FormProps<M extends Model> extends IRFormProps {
+  actions: ICarAction;
   reducer: Object;
-  item:any
+  item: any;
 }
 
-interface FormState<M extends Model> extends IRFormState{
+interface FormState<M extends Model> extends IRFormState {
   value: number;
 }
 
-export default class FormView< M extends Model> extends RFormPage<FormProps<M>, FormState<M>> {
+export default class FormView<M extends Model> extends RFormPage<
+  FormProps<M>,
+  FormState<M>
+> {
   componentDidMount(): void {
     const { actions } = this.props;
     const params: IParams<M> = this.props.match.params;
     if (params.id) {
-      actions.fetchItem();
+      actions.fetchItem({ id: params.id });
     }
   }
 
-  handleSubmit(values:Object): void {
+  handleSubmit(values: { id?: string }): void {
     const { actions } = this.props;
     // this.state.value
 
-    // actions.fetchSave(values);
+    if (values.id) {
+      actions.fetchUpdate(values);
+    } else {
+      actions.fetchSave(values);
+    }
   }
-  handleCancel(values:Object): void {
+  handleCancel(values: Object): void {
     this.goBack();
   }
 
@@ -39,6 +46,7 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
     const { item, actions, locale, spins } = this.props;
     // const saveSpin = spins(actions.fetchSave);
     // const itemSpin = spins(actions.fetchItem);
+    console.log(item);
     return (
       <Panel
         // confirmLoading={saveSpin}
@@ -46,15 +54,12 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
         onOk={this.onSubmit.bind(this, "handleSubmit")}
         onCancel={this.handleCancel.bind(this, "handleCancel")}
       >
-        //@ts-ignore
-        <BaseForm onSubmit={this.onSubmit.bind(this)}
-          ref={this.saveFormRef.bind(this)}
-        >
-          <FormItem label="sdfs" >
-            <Input type="hidden" name="id" defaultValue={item.id} />
+        <BaseForm ref={this.saveFormRef.bind(this)}>
+          <FormItem label="sdfs" name="id">
+            <Select defaultValue={22} />
           </FormItem>
-          <FormItem>
-            <Input name="{@name@}" defaultValue={item.name} />
+          <FormItem label="stye" name="djkf">
+            <Input defaultValue={123} />
           </FormItem>
         </BaseForm>
       </Panel>

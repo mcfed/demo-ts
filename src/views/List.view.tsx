@@ -1,10 +1,19 @@
 import React, { ReactNode } from "react";
-import { Button, Input, Select } from "antd";
-import { ButtonGroups, AdvancedSearch, DataTable, Panel } from "@mcf/components";
+import { Input, Select } from "antd";
+import {
+  ButtonGroups as ButtonGroupsModule,
+  AdvancedSearch,
+  DataTable,
+  Panel,
+} from "@mcf/components";
+
 import { IRListProps, IRListState, IParams, PK, RListPage } from "@mcf/crud";
 import { TableProps } from "antd/lib/table/interface";
 import { ICarAction, IReducerState } from "../interface";
-import Model from '../model'
+import Model from "../model";
+
+const ButtonGroups = ButtonGroupsModule.default;
+const Button = ButtonGroupsModule.CustomButton;
 
 interface ListProps<M> extends IRListProps {
   actions: ICarAction;
@@ -40,14 +49,15 @@ export default class ListView<M extends Model> extends RListPage<
     // return Object.assign(defaultParams, querys("actions.fetchPage"));
     return { a: 1 };
   }
-  handlerMenu(rowkeys: string, actionType: string): void {
+  handlerMenu(rowkeys: PK[], actionType: string): void {
+    console.log(rowkeys, actionType);
     const { actions } = this.props;
     if (actionType === "add") {
       this.goAdd();
     } else if (actionType === "edit") {
-      this.goEdit(rowkeys);
+      this.goEdit(rowkeys[0]);
     } else if (actionType === "detail") {
-      this.goDetail(rowkeys);
+      this.goDetail(rowkeys[0]);
     } else if (actionType === "delete") {
       actions.fetchDelete(rowkeys);
     }
@@ -68,10 +78,7 @@ export default class ListView<M extends Model> extends RListPage<
         /*loading={spins("actions.fetchList")}  */
         filterSubmitHandler={this.handleFilter.bind(this)}
       >
-        <Input
-          name="serverName"
-          defaultValue={query.name}
-        />
+        <Input name="serverName" defaultValue={query.name} />
       </AdvancedSearch>
     );
   }
@@ -87,16 +94,23 @@ export default class ListView<M extends Model> extends RListPage<
 
   renderToolbar(): ReactNode {
     const { selectedRowKeys } = this.state;
-    const { actions, locale,spins } = this.props;
+    const { actions, locale, spins } = this.props;
 
     return (
       <ButtonGroups
         handleClick={(actionType: string) =>
-          this.handlerMenu.bind(selectedRowKeys, actionType)
+          this.handlerMenu(selectedRowKeys, actionType)
         }
       >
-        <Button type="primary">{locale("GLOBAL.NEW")} </Button>
-        <Button loading={spins(actions.fetchDelete)}>
+        <Button
+          type="primary"
+          actionkey="add"
+          confirm="test123"
+          confirmTitle="324"
+        >
+          {locale("GLOBAL.NEW")}
+        </Button>
+        <Button loading={spins(actions.fetchDelete)} actionkey="delete">
           {locale("GLOBAL.REMOVE")}
         </Button>
       </ButtonGroups>
@@ -107,22 +121,17 @@ export default class ListView<M extends Model> extends RListPage<
     return (
       <ButtonGroups
         handleClick={(actionType: string) =>
-          this.handlerMenu(row.id.toString(), actionType)
+          this.handlerMenu([row.id.toString()], actionType)
         }
-        size="small"
       >
-        <Button>{locale("GLOBAL.MODIFY")}</Button>
-        <Button>{locale("GLOBAL.DETAIL")}</Button>
-        <Button>{locale("GLOBAL.REMOVE")}</Button>
+        <Button actionkey="edit">{locale("GLOBAL.MODIFY")}</Button>
+        <Button actionkey="detail">{locale("GLOBAL.DETAIL")}</Button>
+        <Button actionkey="delete">{locale("GLOBAL.REMOVE")}</Button>
       </ButtonGroups>
     );
   }
   renderDataTable(): ReactNode {
-    const {
-      // reducer,
-      items,
-      locale,
-    } = this.props;
+    const { reducer, items, locale } = this.props;
     let tableConf: TableProps<M> = {
       rowKey: "id",
       dataSource: items,
@@ -142,6 +151,6 @@ export default class ListView<M extends Model> extends RListPage<
       ],
     };
 
-    return <DataTable {...tableConf} />;
+    return <DataTable {...tableConf} page={reducer.page} />;
   }
 }

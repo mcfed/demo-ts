@@ -10,7 +10,13 @@ import { namespace } from "./model";
 import { Dispatch } from "redux";
 
 const { defaultMergeProps } = Container;
-const { reducerItemSelector, reducerListSelector, fetchingSelector,reducerSelector,appSelector } = Selector;
+const {
+  reducerItemSelector,
+  reducerListSelector,
+  fetchingSelector,
+  reducerSelector,
+  appSelector,
+} = Selector;
 
 export const mapStateToProps = (state: any, props: any) => {
   return {

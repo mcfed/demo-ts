@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Button } from "antd";
-import { DetailTable, Panel } from "@mcf/components";
-import { IRFormProps, IRFormState} from "@mcf/crud";
+import { Panel } from "@mcf/components";
+import { IRFormProps, IRFormState } from "@mcf/crud";
 import { RFormPage } from "@mcf/crud";
 import Model from "../model";
 
@@ -10,20 +10,23 @@ interface FormProps<M extends Model> extends IRFormProps {
   querys: Function;
   spins: Function;
   reducer: Object;
-  item:any
+  item: any;
 }
 
-interface FormState<M extends Model> extends IRFormState{
+interface FormState<M extends Model> extends IRFormState {
   // value: number
 }
-export default class DetailView<M extends Model> extends RFormPage<FormProps<M>, FormState<M>> {
+export default class DetailView<M extends Model> extends RFormPage<
+  FormProps<M>,
+  FormState<M>
+> {
   handleSubmit(value: any): void {
     throw new Error("Method not implemented.");
   }
   componentDidMount(): void {
     const {
       actions,
-      match: { params }
+      match: { params },
     } = this.props;
     actions.fetchItem({ id: params.id });
   }
@@ -35,7 +38,10 @@ export default class DetailView<M extends Model> extends RFormPage<FormProps<M>,
     const { locale } = this.props;
 
     return (
-      <Button type="primary" onClick={this.handleCancel.bind(this, ["handleCancel"])} >
+      <Button
+        type="primary"
+        onClick={this.handleCancel.bind(this, ["handleCancel"])}
+      >
         {locale("GLOBAL.BACK")}
       </Button>
     );
@@ -45,23 +51,26 @@ export default class DetailView<M extends Model> extends RFormPage<FormProps<M>,
     const source = [
       {
         label: locale("name.label"),
-        value: item.name
+        value: item.name,
       },
       {
         label: locale("title.label"),
-        value: item.nickname
-      }
+        value: item.nickname,
+      },
     ];
 
     return (
-      <Panel title={locale("GLOBAL.DETAIL")} footer={this.renderPanelFooter.bind(this)}>
-        <DetailTable
+      <Panel
+        title={locale("GLOBAL.DETAIL")}
+        footer={this.renderPanelFooter.bind(this)}
+      >
+        {/* <DetailTable
           mode="array"
           title={locale("baseInfo.title")}
           dataSource={source}
           labelKey="label"
           columnNumber={2}
-        />
+        /> */}
       </Panel>
     );
   }
