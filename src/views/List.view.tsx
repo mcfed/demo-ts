@@ -76,6 +76,7 @@ export default class ListView<M extends Model> extends RListPage<
     );
   }
   render(): ReactNode {
+   // console.log(666,this.props)
     return (
       <Panel footer={false}>
         {this.renderSearchForm()}

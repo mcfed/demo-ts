@@ -8,7 +8,13 @@ export default class CarReducer implements ICarReducer {
     }
   };
   saveItem() {
-    return "sss";
+    return {}
+  }
+  saveList(data:any) {
+  
+    return{
+    
+    }
   }
   getReducer() {}
 }

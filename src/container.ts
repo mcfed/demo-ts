@@ -16,6 +16,7 @@ export const mapStateToProps = (state: any, props: any) => {
   return {
     intl: props.intl,
     messages: defineMessages(messages),
+    //...containerSelector(state, namespace, props.match.params.id)
     appReducer: appSelector(state),
     fetchingReducer: fetchingSelector(state),
     reducer: reducerSelector(state, namespace),
