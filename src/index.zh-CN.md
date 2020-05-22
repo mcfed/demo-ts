@@ -136,3 +136,62 @@ class CarReducer implements ICarReducer {
 ### 如何在 Action 中使用
 
 借由依赖注入及访问修饰符带来的便利性，Action 实例可以直接通过`this`获取到 reducer 类的实例并调用其方法来触发一个`dispatch`操作（dispatch 由`@mcf/core`类库提供的 proxy 触发）
+
+## api.ts
+
+定义 ajax 请求的接口
+
+### 基本代码结构
+
+```ts
+import { FetchUtils } from "@mcf/utils"; // 用于发起ajax请求的工具或引擎，非必要
+
+import { IApi } from "./interface"; // 获取api的接口声明，非必要
+
+const API_PREFIX = ""; // 请求的公共地址前缀，非必要
+export default class Api implements IApi {
+  // 每个方法对应一种请求场景
+  fetchList(params: any) {
+    return FetchUtils.fetchList(`${API_PREFIX}/api_prefix`, {
+      body: params,
+    });
+  }
+}
+```
+
+### 如何在 Action 中使用
+
+借由依赖注入及访问修饰符带来的便利性，Action 实例可以直接通过`this`获取到 api 类的实例并调用其方法来发起一个 ajax 请求
+
+## model.ts
+
+定义本模块的持久层数据模型，包括含有的字段、字段的来源（计算值）等
+
+### 基本代码结构
+
+```ts
+import { ORMModel } from "@mcf/core"; // 基于ORM的模型类
+import { IModel } from "./interface"; // 获取model的接口声明，非必要
+
+const { attr, BaseModel, pk } = ORMModel; // 来自于redux-orm的api，用于描述数据模型的字段
+
+export const namespace = "Abcd"; // 当前模型的命名空间，用于在运行时与其他模块进行区分
+
+export default class Abcd extends BaseModel implements IModel {
+  constructor(props: any) {
+    super(props);
+    this.initFields(props); // 由于ts的编译输出结果会覆盖原本的字段映射关系，需要在model基类的构造函数中弥补
+  }
+  static modelName: string = namespace;
+
+  // 每个属性对应一个该模块下数据可以包含的字段
+  @pk()
+  id!: number;
+  @attr()
+  name!: string;
+  @attr()
+  title!: string;
+
+  getName() {}
+}
+```
