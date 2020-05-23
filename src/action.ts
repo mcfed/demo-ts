@@ -9,7 +9,7 @@ const { Injectable } = InjectFactory;
 @Injectable
 class CarAction implements ICarAction {
   constructor(public readonly reducer: Reducer, public readonly api: Api) {}
-  fetchDelete(ids: PK): void {
+  fetchDelete(ids: PK | PK[]): void {
     throw new Error("Method not implemented.");
   }
   stop(payload: { a: string; b: number }) {
@@ -18,8 +18,8 @@ class CarAction implements ICarAction {
   fetchItem() {
     throw new Error("Method not implemented.");
   }
-  fetchPage() {
-    console.log("fetchPage");
+  async fetchPage() {
+    this.reducer.savePage(await this.api.fetchPage());
   }
 }
 

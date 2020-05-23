@@ -1,10 +1,15 @@
 import React, { ReactNode } from "react";
 import { Button, Input, Select } from "antd";
-import { ButtonGroups, AdvancedSearch, DataTable, Panel } from "@mcf/components";
+import {
+  ButtonGroups,
+  AdvancedSearch,
+  DataTable,
+  Panel,
+} from "@mcf/components";
 import { IRListProps, IRListState, IParams, PK, RListPage } from "@mcf/crud";
 import { TableProps } from "antd/lib/table/interface";
 import { ICarAction, IReducerState } from "../interface";
-import Model from '../model'
+import Model from "../model";
 
 interface ListProps<M> extends IRListProps {
   actions: ICarAction;
@@ -40,14 +45,15 @@ export default class ListView<M extends Model> extends RListPage<
     // return Object.assign(defaultParams, querys("actions.fetchPage"));
     return { a: 1 };
   }
-  handlerMenu(rowkeys: string, actionType: string): void {
+  handlerMenu(rowkeys: PK | PK[], actionType: string): void {
+    console.log(actionType);
     const { actions } = this.props;
     if (actionType === "add") {
       this.goAdd();
     } else if (actionType === "edit") {
-      this.goEdit(rowkeys);
+      this.goEdit(rowkeys as PK);
     } else if (actionType === "detail") {
-      this.goDetail(rowkeys);
+      this.goDetail(rowkeys as PK);
     } else if (actionType === "delete") {
       actions.fetchDelete(rowkeys);
     }
@@ -68,10 +74,7 @@ export default class ListView<M extends Model> extends RListPage<
         /*loading={spins("actions.fetchList")}  */
         filterSubmitHandler={this.handleFilter.bind(this)}
       >
-        <Input
-          name="serverName"
-          defaultValue={query.name}
-        />
+        <Input name="serverName" defaultValue={query.name} />
       </AdvancedSearch>
     );
   }
@@ -87,16 +90,26 @@ export default class ListView<M extends Model> extends RListPage<
 
   renderToolbar(): ReactNode {
     const { selectedRowKeys } = this.state;
-    const { actions, locale,spins } = this.props;
+    const { actions, locale, spins } = this.props;
 
     return (
       <ButtonGroups
         handleClick={(actionType: string) =>
-          this.handlerMenu.bind(selectedRowKeys, actionType)
+          this.handlerMenu(selectedRowKeys, actionType)
         }
       >
-        <Button type="primary">{locale("GLOBAL.NEW")} </Button>
-        <Button loading={spins(actions.fetchDelete)}>
+        <Button
+          //@ts-ignore
+          actionkey="add"
+          type="primary"
+        >
+          {locale("GLOBAL.NEW")}
+        </Button>
+        <Button
+          //@ts-ignore
+          actionkey="delete"
+          loading={spins(actions.fetchDelete)}
+        >
           {locale("GLOBAL.REMOVE")}
         </Button>
       </ButtonGroups>
@@ -111,9 +124,24 @@ export default class ListView<M extends Model> extends RListPage<
         }
         size="small"
       >
-        <Button>{locale("GLOBAL.MODIFY")}</Button>
-        <Button>{locale("GLOBAL.DETAIL")}</Button>
-        <Button>{locale("GLOBAL.REMOVE")}</Button>
+        <Button
+          //@ts-ignore
+          actionkey="edit"
+        >
+          {locale("GLOBAL.MODIFY")}
+        </Button>
+        <Button
+          //@ts-ignore
+          actionkey="detail"
+        >
+          {locale("GLOBAL.DETAIL")}
+        </Button>
+        <Button
+          //@ts-ignore
+          actionkey="delete"
+        >
+          {locale("GLOBAL.REMOVE")}
+        </Button>
       </ButtonGroups>
     );
   }
@@ -131,6 +159,11 @@ export default class ListView<M extends Model> extends RListPage<
           title: locale("label"),
           key: "name",
           dataIndex: "name",
+        },
+        {
+          title: locale("title"),
+          key: "title",
+          dataIndex: "title",
         },
         {
           title: locale("GLOBAL.COLUMNS.OPTIONS"),
