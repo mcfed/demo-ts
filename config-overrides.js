@@ -8,7 +8,7 @@ const {
   addExternalBabelPlugin 
 } = require("customize-cra");
 
-const { customBuildConfig, customEntryConfig} = require("mcf-cra")
+const { customBuildConfig, customEntryConfig} = require("@mcf/cra")
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const fixExternalBabelImports = (libraryName, options) =>
   addExternalBabelPlugin([
