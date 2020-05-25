@@ -31,4 +31,20 @@ export default class Api implements IApi{
       body: params,
     });
   }
+
+  fetchPage(params?: any): Promise<ResponsePage> {
+    return Promise.resolve({
+      pageSize: 10,
+      total: 10,
+      currentPage: 1,
+      items: [{id: 'test id', name: 'test name', title: 'test title'}]
+    });
+  }
+}
+
+export interface ResponsePage {
+  pageSize?:number,
+  total:number,
+  currentPage?: number,
+  items?: any[];
 }

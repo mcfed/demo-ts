@@ -23,7 +23,6 @@ const App = () => (
     <IntlProvider locale="zh-CN" onError={function(err) {}}>
     <Router>
       <Switch>
-        //@ts-ignore
         <Route path="/" component={store.loadRouterModule(DemoModule)}></Route>
       </Switch>
     </Router>
