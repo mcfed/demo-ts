@@ -1,9 +1,0 @@
-version: '2'
-services: 
-  vscode:
-    image: codercom/code-server
-    volumes: 
-      - $PWD:/home/coder/project
-    ports: 
-      - 8080:20010
-    user: $(id -u):$(id -g)

@@ -7,7 +7,9 @@ import { createHashHistory } from "history";
 import { createLogger } from "redux-logger";
 import { AppContainer } from "react-hot-loader";
 import { StoreManager } from "@mcf/core";
-import * as DemoModule from "./src/";
+import * as DemoModule from "./";
+
+import 'antd/dist/antd.css'
 
 const store = new StoreManager(
   createHashHistory(),
@@ -39,10 +41,9 @@ const render = (Component: any) => {
 };
 
 render(App);
-// //@ts-ignore
-// if (module.hot) {
-// //@ts-ignore
-//   module.hot.accept(() => {
-//     render(App);
-//   });
-// }
+
+//@ts-ignore
+global.API_PREFIX="/"
+
+
+// serviceWorker.unregister();
