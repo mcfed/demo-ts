@@ -1,7 +1,6 @@
 import { FetchUtils } from '@mcf/utils'; 
 import { IApi } from './interface';
 
-const API_PREFIX = ""
 export default class Api implements IApi{
   fetchList(params:any) {
     return FetchUtils.fetchList(`${API_PREFIX}/api_prefix`, {

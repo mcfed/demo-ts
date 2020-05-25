@@ -41,7 +41,6 @@ const render = (Component: any) => {
 
 render(App);
 
-//@ts-ignore
 global.API_PREFIX="/"
 
 
