@@ -3,11 +3,10 @@ import { PK } from "@mcf/crud";
 export interface IModel{
   id: number;
   name: string;
-  title: string;
 }
 
 export interface IAction {
-  fetchItem(): void;
+  fetchItem(params:any): void;
 }
 
 export interface IReducer{
@@ -40,5 +39,6 @@ export interface ICarAction extends IAction {
   stop(payload:{ a: string, b: number }):void;
   fetchPage(params:any):void;
   fetchDelete(ids:PK | PK[]):void
+  fetchSaveOrUpdate(params:any):void
 }
 

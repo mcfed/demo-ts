@@ -39,11 +39,11 @@ export default class ListView<M extends Model> extends RListPage<
     actions.fetchPage(Object.assign({}, value, params));
   }
   searchParams(): object {
-    // const { actions, querys } = this.props;
-    // const defaultParams: Object = {};
+    const { actions, querys } = this.props;
+    const defaultParams: Object = {};
 
-    // return Object.assign(defaultParams, querys("actions.fetchPage"));
-    return { a: 1 };
+    return Object.assign(defaultParams, querys("actions.fetchPage"));
+    // return { a: 1 };
   }
   handlerMenu(rowkeys: PK | PK[], actionType: string): void {
     console.log(actionType);
@@ -154,16 +154,32 @@ export default class ListView<M extends Model> extends RListPage<
     let tableConf: TableProps<M> = {
       rowKey: "id",
       dataSource: items,
+      rowSelection:{},
       columns: [
         {
-          title: locale("label"),
+          title: locale("name"),
           key: "name",
           dataIndex: "name",
         },
         {
-          title: locale("title"),
-          key: "title",
-          dataIndex: "title",
+          title: locale("hostname"),
+          key: "hostname",
+          dataIndex: "hostname",
+        },
+        {
+          title: locale("port"),
+          key: "port",
+          dataIndex: "port",
+        },
+        {
+          title: locale("dbtype"),
+          key: "dbtype",
+          dataIndex: "dbtype",
+        },
+        {
+          title: locale("configCount"),
+          key: "configCount",
+          dataIndex: "configCount",
         },
         {
           title: locale("GLOBAL.COLUMNS.OPTIONS"),

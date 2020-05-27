@@ -7,7 +7,7 @@ function routes(props:RouteProps):Array<RouteProps>{
     exact:true,
     component:Containers.ListContainer
   },{
-    path:`${path}add`,
+    path:`${path}/add`,
     component:Containers.FormContainer
   },{
     path:`${path}:id/edit`,

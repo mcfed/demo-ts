@@ -1,9 +1,10 @@
 import { FetchUtils } from '@mcf/utils'; 
 import { IApi } from './interface';
 
+const API_PREFIX:string = 'http://192.168.200.178:3000/mock/60/capaa'
 export default class Api implements IApi{
   fetchList(params:any) {
-    return FetchUtils.fetchList(`${API_PREFIX}/api_prefix`, {
+    return FetchUtils.fetchList(`${API_PREFIX}/tongfang/manage`, {
       body: params,
     });
   }
@@ -14,7 +15,7 @@ export default class Api implements IApi{
   }
 
   fetchSave(params:any) {
-    return FetchUtils.fetchPost(`${API_PREFIX}/api_prefix/:id`, {
+    return FetchUtils.fetchPost(`${API_PREFIX}/api_prefix`, {
       body: params,
     });
   }

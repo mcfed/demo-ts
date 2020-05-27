@@ -21,15 +21,14 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
     const { actions } = this.props;
     const params: IParams<M> = this.props.match.params;
     if (params.id) {
-      actions.fetchItem();
+      actions.fetchItem(params.id);
     }
   }
 
   handleSubmit(values:Object): void {
     const { actions } = this.props;
     // this.state.value
-
-    // actions.fetchSave(values);
+    actions.fetchSaveOrUpdate(values);
   }
   handleCancel(values:Object): void {
     this.goBack();
@@ -51,11 +50,23 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
           onSubmit={this.onSubmit.bind(this)}
           ref={this.saveFormRef.bind(this)}
         >
-          <FormItem label="sdfs" >
+          <FormItem>
             <Input type="hidden" name="id" defaultValue={item.id} />
           </FormItem>
-          <FormItem>
-            <Input name="{@name@}" defaultValue={item.name} />
+          <FormItem label="name">
+            <Input name="name" defaultValue={item.name} />
+          </FormItem>
+          <FormItem label="hostname">
+            <Input name="hostname" defaultValue={item.hostname} />
+          </FormItem>
+          <FormItem label="port">
+            <Input name="port" defaultValue={item.port} />
+          </FormItem>
+          <FormItem label="dbtype">
+            <Input name="dbtype" defaultValue={item.dbtype} />
+          </FormItem>
+          <FormItem label="configCount">
+            <Input name="configCount" defaultValue={item.configCount} />
           </FormItem>
         </BaseForm>
       </Panel>
