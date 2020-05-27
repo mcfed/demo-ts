@@ -10,25 +10,23 @@ import { namespace } from "./model";
 import { Dispatch } from "redux";
 
 const { defaultMergeProps } = Container;
-const { reducerItemSelector, reducerListSelector, fetchingSelector } = Selector;
+const { reducerItemSelector, reducerListSelector, fetchingSelector,reducerSelector,appSelector } = Selector;
 
 export const mapStateToProps = (state: any, props: any) => {
   return {
     intl: props.intl,
-    appReducer: state.appReducer,
-    fetchingReducer: state.fetchingReducer,
-    reducer: state[namespace],
     messages: defineMessages(messages),
-    items: state[namespace].items,
-    item: state[namespace].item,
-    // items:reducerListSelector(state, namespace),
-    // item: reducerItemSelector(state, namespace, props.match.params.id),
+    appReducer: appSelector(state),
+    fetchingReducer: fetchingSelector(state),
+    reducer: reducerSelector(state, namespace),
+    items: reducerListSelector(state, namespace),
+    item: reducerItemSelector(state, namespace, props.match.params.groupId),
   };
 };
 export const dispatchToProps = (dispatch: Dispatch, props: object) => {
   return {
     dispatch,
-    actions: InjectFactory.ActionFactory(CarAction, dispatch),
+    actions: InjectFactory.ActionFactory(CarAction, dispatch, namespace),
   };
 };
 export const ListContainer = injectIntl(

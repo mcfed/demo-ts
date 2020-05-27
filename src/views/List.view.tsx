@@ -3,7 +3,7 @@ import { Button, Input, Select } from "antd";
 import { ButtonGroups, AdvancedSearch, DataTable, Panel } from "@mcf/components";
 import { IRListProps, IRListState, IParams, PK, RListPage } from "@mcf/crud";
 import { TableProps } from "antd/lib/table/interface";
-import { ICarAction, IReducerState, IModel } from "../interface";
+import { ICarAction, IReducerState } from "../interface";
 import Model from '../model'
 
 interface ListProps<M> extends IRListProps {
@@ -33,11 +33,9 @@ export default class ListView<M extends Model> extends RListPage<
     actions.fetchPage(Object.assign({}, value, params));
   }
   searchParams(): object {
-    const { actions, querys } = this.props;
+    const { actions,querys } = this.props;
     const defaultParams: Object = {};
-
-    // return Object.assign(defaultParams, querys("actions.fetchPage"));
-    return { a: 1 };
+    return Object.assign(defaultParams, querys(actions.fetchPage));
   }
   handlerMenu(rowkeys: string, actionType: string): void {
     const { actions } = this.props;
@@ -60,7 +58,7 @@ export default class ListView<M extends Model> extends RListPage<
     );
   }
   renderSearchForm(): ReactNode {
-    const { actions, spins, locale } = this.props;
+    // const { actions, spins, locale } = this.props;
     const query: IParams<M> = this.searchParams();
     return (
       <AdvancedSearch
@@ -68,8 +66,8 @@ export default class ListView<M extends Model> extends RListPage<
         filterSubmitHandler={this.handleFilter.bind(this)}
       >
         <Input
-          name="serverName"
-          defaultValue={query.name}
+          name="groupName"
+          defaultValue={query.groupName}
         />
       </AdvancedSearch>
     );
@@ -86,8 +84,7 @@ export default class ListView<M extends Model> extends RListPage<
 
   renderToolbar(): ReactNode {
     const { selectedRowKeys } = this.state;
-    this.state.selectedRows.map((it: M) => it.name);
-    const { actions, locale } = this.props;
+    const { actions, locale,spins } = this.props;
 
     return (
       <ButtonGroups
@@ -95,60 +92,60 @@ export default class ListView<M extends Model> extends RListPage<
           this.handlerMenu.bind(selectedRowKeys, actionType)
         }
       >
-
         <Button type="primary">{locale("GLOBAL.NEW")} </Button>
-        <Button /* loading={spins(actions.fetchDelete)} */>
+        <Button>{locale("GLOBAL.MODIFY")}</Button>
+        <Button loading={spins(actions.fetchDelete)}>
           {locale("GLOBAL.REMOVE")}
         </Button>
-      </ButtonGroups>
+    </ButtonGroups>
+
     );
   }
   renderTableButtonGroups(text: string, row: M): ReactNode {
-    const { actions,locale,spins } = this.props;
+    const { locale } = this.props;
     return (
       <ButtonGroups
         handleClick={(actionType: string) =>
-          this.handlerMenu(row.dbserverId.toString(), actionType)
+          this.handlerMenu(row.groupId.toString(), actionType)
         }
         size="small"
       >
         <Button>{locale("GLOBAL.MODIFY")}</Button>
-        {/* <Button actionkey='edit'
-          // loading={spins(actions)}
-          // disabled={this.selectMultiple()}
-          type='primary'>{locale("GLOBAL.DETAIL")}</Button> */}
-        {/* <Button>{locale("GLOBAL.REMOVE")}</Button> */}
+        <Button>{locale("GLOBAL.DETAIL")}</Button>
+        <Button>{locale("GLOBAL.REMOVE")}</Button>
       </ButtonGroups>
     );
   }
   renderDataTable(): ReactNode {
     const {
-      reducer: {},
+      reducer,
       items,
-      actions,
-      spins,
       locale,
     } = this.props;
-    items.map((it:M)=>it.title)
     let tableConf: TableProps<M> = {
-      rowKey: "dbserverId",
+      rowKey: "groupId",
       dataSource: items,
       columns: [
         {
-          title: locale("dbserverDisplayName"),
-          key: "dbserverDisplayName",
-          dataIndex: "dbserverDisplayName",
+          title: locale("groupName.label"),
+          key: "groupName",
+          dataIndex: "groupName",
         },
         {
-          title: locale("dbserverIp"),
-          key: "dbserverIp",
-          dataIndex: "dbserverIp",
+          title: locale("dbType.label"),
+          key: "dbType",
+          dataIndex: "dbType",
+        },
+        {
+          title: locale("createTime.label"),
+          key: "createTime",
+          dataIndex: "createTime",
         },
         {
           title: locale("GLOBAL.COLUMNS.OPTIONS"),
           key: "options",
           dataIndex: "options",
-          width: 190,
+          width: 590,
           render: this.renderTableButtonGroups.bind(this),
         },
       ],

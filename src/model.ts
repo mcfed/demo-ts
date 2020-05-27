@@ -3,20 +3,23 @@ import { IModel } from "./interface";
 
 const { attr, BaseModel, pk } = ORMModel;
 
-export const namespace = "Abcd";
+export const namespace = "DbGroup";
 
-export default class Abcd extends BaseModel implements IModel {
-  static modelName: string = namespace;
-  @attr()
-  id!: number;
-  @pk()
-  name!: string;
-  @attr()
-  title!: string;
-  @attr()
-  dbserverId!: number;
-  
-  getName(){
-
+export default class DbGroup extends BaseModel implements IModel {
+  constructor(props: any) {
+    super(props);
+    this.initFields(props);
   }
+  static modelName: string = namespace;
+
+  @pk()
+  groupId!: number;
+  @attr()
+  dbType!: string;
+  @attr()
+  groupName!: string;
+  @attr()
+  createTime!: string;
+  
+  getDbType(){}
 }

@@ -1,17 +1,23 @@
 import { PK } from "@mcf/crud";
 
 export interface IModel{
-  id: number;
-  name: string;
-  title: string;
+  groupId: number;
+  dbType: string;
+  groupName: string;
+  createTime: string;
 }
 
 export interface IAction {
-  fetchItem(): void;
+  fetchItem(rowkeys:PK): void;
+  fetchDelete(rowkeys:any): void;
+  fetchPage(rowkeys:any): void;
+  fetchSave(rowkeys:any): void;
 }
 
 export interface IReducer{
-  getReducer():void
+  savePage(payload:any):void;
+  saveItem(payload:any):void;
+  deleteItem(payload:any):void;
 }
 
 export interface IApi{
@@ -26,17 +32,19 @@ export interface IReducerState{
   page:{
     pageSize:number,
     total:number
-  },
-  items:any
+  }
 }
 
 export interface ICarReducer extends IReducer {
-  saveItem():Object
+  saveItem(payload:any):Object;
+  savePage(payload:any):Object;
+  deleteItem(payload:any):Object;
 }
 
 export interface ICarAction extends IAction {
-  stop(payload:{ a: string, b: number }):void;
   fetchPage(params:any):void;
-  fetchDelete(ids:PK):void
+  fetchDelete(ids:PK):void;
+  fetchSave(values:any):void;
+  fetchItem(id:PK):void;
 }
 

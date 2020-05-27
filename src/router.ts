@@ -10,10 +10,10 @@ function routes(props:RouteProps):Array<RouteProps>{
     path:`${path}add`,
     component:Containers.FormContainer
   },{
-    path:`${path}:id/edit`,
+    path:`${path}:groupId/edit`,
     component:Containers.FormContainer
   },{
-    path:`${path}:id`,
+    path:`${path}:groupId`,
     component:Containers.DetailContainer
   }]
 }

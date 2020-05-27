@@ -12,7 +12,7 @@ import * as DemoModule from "./src/";
 const store = new StoreManager(
   createHashHistory(),
   //@ts-ignore
-  new DemoModule.reducer().getReducer(),
+  [],
   [createLogger()]
 );
 

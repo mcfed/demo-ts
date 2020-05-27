@@ -1,5 +1,4 @@
-// import {defineMessages} from 'react-intl';
-function defineMessages(locale){
+function defineMessages(locale:any){
     return locale
 }
 

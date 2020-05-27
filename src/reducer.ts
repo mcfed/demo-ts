@@ -5,16 +5,26 @@ export default class CarReducer implements ICarReducer {
     page:{
       pageSize:10,
       total:0
-    },
-    items:[]
+    }
   };
-  saveItem() {
-    return "sss";
-  }
-  getReducer() {}
-  savePage(payload:{items:any}){
+  savePage(payload:any){
+    const pageSize= payload.pageSize|| payload.end+1-payload.start
     return {
-      items:payload.items
+      page:{
+        total:payload.totalCount ||payload.total,
+        pageSize,
+        current:payload.currentPage || Math.ceil((payload.start+1)/pageSize)
+      }
+    }
+  }
+  saveItem(payload:any) {
+    return {
+      item:payload
+    }
+  }
+  deleteItem(payload:any){
+    return {
+      item:{}
     }
   }
 }
