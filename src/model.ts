@@ -13,12 +13,12 @@ export default class Abcd extends BaseModel implements IModel {
   static modelName: string = namespace;
   @pk()
   id!: number;
-  @attr()
+  @attr('title')
   name!: string;
-  @attr()
+  // @attr()
   title!: string;
 
   getName(){
-    return this.name
+    return Reflect.getMetadata('name',Abcd)
   }
 }

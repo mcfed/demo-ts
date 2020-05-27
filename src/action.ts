@@ -1,23 +1,27 @@
-import { InjectFactory } from "@mcf/core";
+import { InjectFactory,Middleware } from "@mcf/core";
 import { PK } from "@mcf/crud";
 import { ICarAction } from "./interface";
 import Api from "./api";
 import Reducer from "./reducer";
-import {message} from 'antd'
+import { param, loading } from './decorator'
 
 const { Injectable } = InjectFactory;
+const {MiddlewareFactory} =Middleware
 
 @Injectable
 class CarAction implements ICarAction {
-  constructor(public readonly reducer: Reducer, public readonly api: Api, public middleware: any) {}
+  //@ts-ignore
+  constructor(public readonly reducer: Reducer, public readonly api: Api, public middleware: MiddlewareFactory) {}
 
   async fetchDelete(ids: PK) {
     const data = await this.api.fetchDelete({id:ids});
+   
     if(data && data.code === 0){
+      console.log(this.reducer)
       // this.fetchPage(this.params)
-      message.success('请求成功！')
+      this.middleware.showSuccess('请求成功！')
     }else{
-      message.error('请求失败！')
+      this.middleware.showError('请求失败！')
     }
   }
 
@@ -25,42 +29,45 @@ class CarAction implements ICarAction {
     console.log("stop", payload.a, payload.b);
   }
 
+
   async fetchItem(id:number) {
     const data = await this.api.fetchItem(id);
     if(data && data.code === 0){
       this.reducer.saveItem(data.data)
-      message.success('请求成功！')
+      this.middleware.showSuccess('请求成功！')
     }else{
-      message.error('请求失败！')
+      this.middleware.showError('请求失败！')
     }
   }
 
+
+  @loading()
+  @param()
   async fetchPage(params:any) {
     const data = await this.api.fetchList(params);
-    // this.params = params;
     if(data && data.code === 0){
       this.reducer.savePage(data.data)
-      message.success('请求成功！')
+      this.middleware.showSuccess('请求成功！')
     }else{
-      message.error('请求失败！')
+      this.middleware.showError('请求失败！')
     }
   }
 
   async fetchSave(params:any) {
     const data = await this.api.fetchSave(params);
     if(data && data.code === 0){
-      message.success('请求成功！')
+      this.middleware.showSuccess('请求成功！')
     }else{
-      message.error('请求失败！')
+      this.middleware.showError('请求失败！')
     }
   }
 
   async fetchUpdate(params:any) {
     const data = await this.api.fetchUpdate(params);
     if(data && data.code === 0){
-      message.success('请求成功！')
+      this.middleware.showSuccess('请求成功！')
     }else{
-      message.error('请求失败！')
+      this.middleware.showError('请求失败！')
     }
   }
 }

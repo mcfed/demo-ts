@@ -40,6 +40,8 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
 
   render(): ReactNode {
     const { item, actions, locale, spins, reducer } = this.props;
+    console.log(item.getName())
+    console.log(this.props)
     // reducer.page.total
     return (
       <Panel
@@ -57,7 +59,7 @@ export default class FormView< M extends Model> extends RFormPage<FormProps<M>, 
             <Input type="hidden" name="id" defaultValue={item.id} />
           </FormItem>
           <FormItem label="name">
-            <Input name="name" defaultValue={item.name} />
+            <Input name="name" defaultValue={item.getName()} />
           </FormItem>
         </BaseForm>
       </Panel>

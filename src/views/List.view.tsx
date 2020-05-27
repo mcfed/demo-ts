@@ -75,6 +75,8 @@ export default class ListView<M extends Model> extends RListPage<
   searchParams(): object {
     const { actions, querys } = this.props;
     const defaultParams: Object = {};
+    // console.log(querys(actions.fetchPage))
+    console.log(querys('CarAction/fetchPage'))
     return Object.assign(defaultParams, querys(actions.fetchPage));
   }
   // handlerMenu = (rowkeys: PK[], actionType: string): void => {
@@ -127,10 +129,10 @@ export default class ListView<M extends Model> extends RListPage<
   renderToolbar(): ReactNode {
     const { selectedRowKeys } = this.state;
     this.state.selectedRows.map((it: M) => it.name);
-    const { actions, locale } = this.props;
+    const { actions, locale, spins } = this.props;
     return (
       <ButtonGroups handleClick={this.handlerMenu.bind(this, selectedRowKeys)}>
-        <MyButton type="primary" actionkey="add">
+        <MyButton type="primary" actionkey="add" loading={spins('CarAction/fetchPage')}>
           {locale("GLOBAL.NEW")}
         </MyButton>
         <MyButton
@@ -163,7 +165,6 @@ export default class ListView<M extends Model> extends RListPage<
       spins,
       locale,
     } = this.props;
-    console.log(this.props);
     let tableConf: TableProps<M> = {
       rowKey: "id",
       dataSource: items,

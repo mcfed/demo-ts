@@ -7,13 +7,32 @@ import { createHashHistory } from "history";
 import { createLogger } from "redux-logger";
 import { AppContainer } from "react-hot-loader";
 import { StoreManager } from "@mcf/core";
+import {message} from 'antd'
 import * as DemoModule from "./src/";
+import createMessage from './src/redux-message'
+
+
+const messageMiddleware = createMessage({
+  success:function(msg){
+    message.success(msg)
+  },
+  error:function(msg){
+    message.error(msg)
+  },
+  comfirm:function(){
+    
+  },
+  message:function(){
+
+  }
+})
+
 
 const store = new StoreManager(
   createHashHistory(),
   //@ts-ignore
   new DemoModule.reducer().getReducer(),
-  [createLogger()]
+  [createLogger(),messageMiddleware]
 );
 
 const App = () => (
