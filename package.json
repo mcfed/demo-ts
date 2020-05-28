@@ -11,6 +11,7 @@
     "@mcf/crud": "0.4.1-rc1",
     "@mcf/utils": "^0.2.0-rc5",
     "@types/redux-logger": "^3.0.7",
+    "@types/redux-orm": "^0.13.6",
     "antd": "3.5.3",
     "history": "^4.10.1",
     "mcf-cra": "0.0.11",
@@ -81,7 +82,7 @@
     "README.md"
   ],
   "config": {
-    "API_SERVER": "/",
-    "MOCK_SERVER": "/mock"
+    "API_SERVER": "/capaa",
+    "MOCK_SERVER": "http://192.168.200.178:3000/mock/60"
   }
 }

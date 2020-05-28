@@ -6,37 +6,30 @@ import { Provider } from "react-redux";
 import { createHashHistory } from "history";
 import { createLogger } from "redux-logger";
 import { AppContainer } from "react-hot-loader";
-import { StoreManager } from "@mcf/core";
+import { StoreManager, Middleware,InjectFactory } from "@mcf/core"; 
+import {store} from './store'
+//import  StoreManager  from "./src/core/store";
 import * as DemoModule from "./src/";
+
+//import {ActionFactory2} from './src/ActionFactory2'
 //import createPassport from "./src/ss";
-//import createPassport from "@mcf/core/dist/middleware/redux-passport";
-import { passportMiddleware } from "@mcf/core/dist/middleware";
+import createPassport from "@mcf/core/dist/middleware/redux-passport";
+
 import {combineReducers} from 'redux'
 
-const persistConfig = {
-  key: 'root',
-  //storage,
-  whitelist: ['loggedUserState'],
-};
+const { Injectable } = InjectFactory;
 
 
-// const storeManager = new StoreManager(createBrowserHistory(),{
-//   loggedUserState: loggedUserReducer,
-//   changePhoneState: changePhoneReducer
-//   },
-//   [createLogger()],
-//   markRootReducer
-// )
 
-const middleware={
-  a:function(payload){
-    console.log(55,payload)
-    return {
-      type:'aaa/bb',
-      payload:payload
-    }
-  }
-}
+// const middleware={
+//   a:function(payload){
+//     console.log(55,payload)
+//     return {
+//       type:'aaa/bb',
+//       payload:payload
+//     }
+//   }
+// }
 
 function aaa(state = [], action) {
   switch (action) {
@@ -45,9 +38,7 @@ function aaa(state = [], action) {
     default:
       return state
   }
-  //return aaa
 }
-//console.log(88,typeof aaa)
 function counter(state = 0, action) {
   switch (action) {
     case 'INCREMENT':
@@ -59,38 +50,98 @@ function counter(state = 0, action) {
   }
 }
 
-function markRootReducer(asyncReducers){
- // console.log(21,asyncReducers,counter)
-  return combineReducers({
-      ...asyncReducers,
-      counter,
-      aaa,
-      passportMiddleware
-    })
+
+function fetchLogining(payload: any) {
+  const FETCH_LOGINING = '@@MIDDLEWARE/FETCH_LOGINING';
+  return {
+    type: FETCH_LOGINING,
+    payload: payload
+  };
 }
-const rootReducer = combineReducers({ fetchingReducer:aaa})
-export const store = new StoreManager(
-  createHashHistory(),
-  //@ts-ignore
-  new DemoModule.reducer().getReducer(),
-  [createLogger()], //,createPassport({})
-  markRootReducer
- // middleware:{
-   // a:{'',''}
-    //...passportMiddleware,
-    //...fetchingMiddleware
 
- // }
-);
-
-
-const { dispatch } = store;
-var middlewareB={
-  a:function(payload){
-    console.log(44,payload)
-    dispatch(middleware.a)
+function markRootReducer(asyncReducers){
+  const aa=combineReducers({
+   // fetchLogining,
+    ...asyncReducers,
+   // counter,
+  //  aaa,
+   // fetchLogining,
+  })
+  //console.log(21,asyncReducers,counter,aa)
+  return aa
+} 
+function getReducer() {}
+function getReducer2(store:any) {
+  return function a(next:any){
+    return function b(action:any){
+      //let result = next(action)
+      //const disp=next.dispatch
+      console.log('dispatchingcccccccccccccc',store.getState(),action,next,next.dispatch)
+     // return store.getState().fetchingReducer
+      //return store.getState()
+     // return next.dispatch
+    }
   }
 }
+//@ts-ignore
+//const store0 = new StoreManager(createHashHistory(), new getReducer(), [], markRootReducer);
+//const rootReducer = combineReducers({ fetchingReducer:aaa})
+// const store = new StoreManager(
+//   createHashHistory(),
+//   //@ts-ignore
+//   new DemoModule.reducer().getReducer(),
+//   //@ts-ignore
+//   //[createLogger(),createLogger2(store0.store)], //, getReducer2(store0.store)
+//   [createLogger()],
+//   markRootReducer
+//  // middleware:{
+//    // a:{'',''}
+//     //...passportMiddleware,
+//     //...fetchingMiddleware
+
+//  // }
+// );
+// var injectMiddleware = async function(store){
+//   const module = require('./src/passport');
+//   const importModule = new Promise((resolve, rejects) => resolve(module));
+//   await store.importModule(importModule)
+// }
+// injectMiddleware(store)
+console.log(788,store,store.getStore().getState())
+
+//console.log(11,createLogger(),store)
+
+// class Api {
+//   fetch() {
+//     console.log('fetch');
+//   }
+// }
+// class Reducer{
+//   fetch2() {
+//     console.log('fetch2');
+//   }
+// }
+// class Middleware2{
+//   fetch3() {
+//     console.log('fetch3');
+//   }
+//   createPassport(){}
+// }
+// @Injectable
+// class Action {
+//   constructor(public readonly reducer: Reducer, public readonly api: Api,public readonly middlewares:Middleware2) {}
+//   fetchAction() {
+//     this.api.fetch();
+//   }
+// }
+
+// const { dispatch } = store;
+// var middlewareB={
+//   a:function(payload){
+//     console.log(44,payload)
+//     dispatch(middleware.a)
+//   }
+// }
 
 
 

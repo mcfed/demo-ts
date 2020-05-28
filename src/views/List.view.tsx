@@ -25,12 +25,17 @@ export default class ListView<M extends Model> extends RListPage<
   componentDidMount(): void {
     // this.props.
     this.handleFilter(this.searchParams());
+    
+    //@ts-ignore
+    console.log(778787,this.props)
+   // dispatch({type:'fetchParams'})
   }
   handleFilter(value: Object) {
     const {
       actions,
       match: { params },
-    } = this.props;
+    } = this.props; 
+    console.log(666,actions)
     actions.fetchPage(Object.assign({}, value, params));
   }
   searchParams(): object {
@@ -76,7 +81,7 @@ export default class ListView<M extends Model> extends RListPage<
     );
   }
   render(): ReactNode {
-   // console.log(666,this.props)
+    console.log(666,this.props)
     return (
       <Panel footer={false}>
         {this.renderSearchForm()}
@@ -97,9 +102,9 @@ export default class ListView<M extends Model> extends RListPage<
         }
       >
         <Button type="primary">{locale("GLOBAL.NEW")} </Button>
-        <Button loading={spins(actions.fetchDelete)}>
+        {/* <Button loading={spins(actions.fetchDelete)}>
           {locale("GLOBAL.REMOVE")}
-        </Button>
+        </Button> */}
       </ButtonGroups>
     );
   }

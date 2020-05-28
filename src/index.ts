@@ -9,3 +9,4 @@ import * as container from "./container";
 export { saga, reducer, router, model, container };
 export default (props: RouteComponentProps): JSX.Element =>
   renderRoutes(router(props.match));
+ 

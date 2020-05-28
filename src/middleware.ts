@@ -5,10 +5,10 @@ import globalMiddlware from "@mcf/core/dist/middleware/redux-module";
 //import {store} from '../app'
 //const { dispatch } = store;
 export default class CarReducer {
-  createPassport() {
-    return createPassport({})
-  }
-  globalMiddlware(){
-    return globalMiddlware()
-  }
+  // createPassport() {
+  //   return createPassport({})
+  // }
+  // globalMiddlware(){
+  //   return globalMiddlware()
+  // }
 }
