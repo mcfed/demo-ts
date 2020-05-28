@@ -19,7 +19,7 @@ class CarAction implements ICarAction {
     throw new Error("Method not implemented.");
   }
   async fetchPage() {
-    this.reducer.savePage(await this.api.fetchPage());
+    this.reducer.savePage(await this.api.fetchList({}));
   }
 }
 

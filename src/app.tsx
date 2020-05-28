@@ -7,6 +7,7 @@ import { createHashHistory } from "history";
 import { createLogger } from "redux-logger";
 import { AppContainer } from "react-hot-loader";
 import { StoreManager } from "@mcf/core";
+import './setupDev'
 import * as DemoModule from "./";
 
 import 'antd/dist/antd.css'
@@ -40,8 +41,5 @@ const render = (Component: any) => {
 };
 
 render(App);
-
-global.API_PREFIX="/"
-
 
 // serviceWorker.unregister();

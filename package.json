@@ -82,7 +82,7 @@
     "README.md"
   ],
   "config": {
-    "API_SERVER": "/",
-    "MOCK_SERVER": "/mock"
+    "API_SERVER": "/capaa",
+    "MOCK_SERVER": "http://192.168.200.178:3000/mock/60"
   }
 }

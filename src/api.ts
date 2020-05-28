@@ -3,7 +3,7 @@ import { IApi } from './interface';
 
 export default class Api implements IApi{
   fetchList(params:any) {
-    return FetchUtils.fetchList(`${API_PREFIX}/api_prefix`, {
+    return FetchUtils.fetchList(`${API_PREFIX}/report/push/records`, {
       body: params,
     });
   }
