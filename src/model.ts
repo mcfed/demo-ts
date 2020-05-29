@@ -1,7 +1,8 @@
 import { ORMModel } from "@mcf/core";
 import { IModel } from "./interface";
+import { BaseModel } from "./base";
 
-const { attr, BaseModel, pk } = ORMModel;
+const { attr, pk } = ORMModel;
 
 export const namespace = "Abcd";
 
@@ -13,12 +14,12 @@ export default class Abcd extends BaseModel implements IModel {
   static modelName: string = namespace;
   @pk()
   id!: number;
-  @attr('title')
+  @attr("title")
   name!: string;
   // @attr()
   title!: string;
 
-  getName(){
-    return Reflect.getMetadata('name',Abcd)
+  getName() {
+    return Reflect.getMetadata("name", Abcd);
   }
 }

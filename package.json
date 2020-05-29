@@ -7,7 +7,7 @@
   "dependencies": {
     "@csstools/normalize.css": "^10.1.0",
     "@mcf/components": "0.0.1-beta5",
-    "@mcf/core": "0.4.4-rc3",
+    "@mcf/core": "0.4.7",
     "@mcf/crud": "0.4.1-rc1",
     "@mcf/utils": "^0.2.0-rc5",
     "@types/redux-logger": "^3.0.7",
