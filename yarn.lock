@@ -1189,9 +1189,9 @@
   optionalDependencies:
     antd "3.5.3"
 
-"@mcf/core@0.4.7":
-  version "0.4.7"
-  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.7.tgz#f62e0a44d2f58e5ad4d5803fdd4e012a44d6a283"
+"@mcf/core@0.4.12":
+  version "0.4.12"
+  resolved "http://nexus.mchz.com.cn:4873/@mcf%2fcore/-/core-0.4.12.tgz#ebcd15d0631af8c56f67428016bbdba61b1a1561"
   dependencies:
     core-decorators "^0.20.0"
     history "^4.10.1"

@@ -6,12 +6,18 @@ export const param = () => {
   ) {
     var fn = descriptor.value;
     descriptor.value = async function(...args: any[]) {
-      args = args.map((value) => {
+      //@ts-ignore
+      if(!this.__proto__[propertyKey]) return
+      // @ts-ignore
+      let type = `${this.__proto__.constructor.name}/${propertyKey}`;
+      args.map((value) => {
         let payload = {
-          // @ts-ignore
-          type: `${this.__proto__.constructor.name}/${propertyKey}`,
+          type: type,
           payload: value,
         };
+
+        //@ts-ignore
+        this.__proto__[propertyKey].toString = () => type;
 
         //@ts-ignore
         this.middleware.fetchParams(payload);
@@ -30,6 +36,8 @@ export const loading = () => {
     var fn = descriptor.value;
     descriptor.value = async function(...args: any[]) {
       //@ts-ignore
+      if(!this.__proto__[propertyKey]) return
+      //@ts-ignore
       let type = `${this.__proto__.constructor.name}/${propertyKey}`;
       let reqPayload = {
         type: type,
@@ -39,21 +47,18 @@ export const loading = () => {
         type: type,
         payload: false,
       };
+      //@ts-ignore
+      this.__proto__[propertyKey].toString = () => type;
 
       // @ts-ignore
       const { fetchReq, fetchRes } = this.middleware;
 
       fetchReq(reqPayload);
-      if (fn.constructor.name === 'AsyncFunction') {
-        await fn.apply(this, args);
-      } else {
-        fn.apply(this, args)
-      }
+      await fn.apply(this, args);
       fetchRes(resPayload);
     };
   };
 };
-
 
 export const other = () => {
   return function(
@@ -62,10 +67,8 @@ export const other = () => {
     descriptor: PropertyDescriptor
   ) {
     var fn = descriptor.value;
-    descriptor.value = async function(...args: any[]) {
-      args = args.map((value) => {
-        console.log(value)
-      });
+    descriptor.value = function(...args: any[]) {
+      console.log(target);
       fn.apply(this, args);
     };
   };

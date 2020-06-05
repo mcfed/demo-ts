@@ -36,6 +36,7 @@ export interface ICarReducer extends IReducer {
 export interface ICarAction extends IAction {
   stop(payload:{ a: string, b: number }):void;
   fetchPage(params:any):void;
-  fetchDelete(ids:PK):void
+  fetchDelete(ids:PK):void;
+  fetchPages():void;
 }
 

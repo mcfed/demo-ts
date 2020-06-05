@@ -1,5 +1,8 @@
 import { param, loading } from "../decorator";
 import { PK } from "@mcf/crud";
+import { Decorator } from "@mcf/core";
+
+// const { param, loading } = Decorator;
 
 export default class BaseAction {
   // reducer:any;
@@ -8,8 +11,8 @@ export default class BaseAction {
   // constructor(...args: any[]) {}
   constructor(public readonly reducer: any, public readonly api: any, public middleware: any) {}
 
-  @param()
-  @loading()
+  // @param()
+  // @loading()
   async fetchPage(params: any) {
     const data = await this.api.fetchList(params);
     if (data && data.code === 0) {

@@ -69,14 +69,14 @@ export default class ListView<M extends Model> extends RListPage<
       actions,
       match: { params },
     } = this.props;
-    actions.fetchPage(Object.assign({}, value, params));
+    actions.fetchPage(Object.assign({b:2}, value, params,{a:1}));
+    // actions.fetchPages();
   }
 
   searchParams(): object {
     const { actions, querys } = this.props;
     const defaultParams: Object = {};
-    // console.log(querys(actions.fetchPage))
-    console.log(querys('CarAction/fetchPage'))
+    console.log(querys(actions.fetchPage))
     return Object.assign(defaultParams, querys(actions.fetchPage));
   }
   // handlerMenu = (rowkeys: PK[], actionType: string): void => {
@@ -130,9 +130,10 @@ export default class ListView<M extends Model> extends RListPage<
     const { selectedRowKeys } = this.state;
     this.state.selectedRows.map((it: M) => it.name);
     const { actions, locale, spins } = this.props;
+    console.log(spins(actions.fetchPage),spins(actions.fetchPages))
     return (
       <ButtonGroups handleClick={this.handlerMenu.bind(this, selectedRowKeys)}>
-        <MyButton type="primary" actionkey="add" loading={spins('CarAction/fetchPage')}>
+        <MyButton type="primary" actionkey="add" loading={spins(actions.fetchPage)}>
           {locale("GLOBAL.NEW")}
         </MyButton>
         <MyButton
@@ -202,3 +203,4 @@ export default class ListView<M extends Model> extends RListPage<
     );
   }
 }
+
