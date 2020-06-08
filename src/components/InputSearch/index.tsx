@@ -7,6 +7,7 @@ const { Search } = Input;
 interface InputSearchProps extends InputProps,SearchProps{
   onSearch?: (arg: any) => void;
   onChange?: (arg: any) => void;
+  onBlur?: (arg: any) => void;
   defaultValue?: any;
 }
 
@@ -26,6 +27,11 @@ export default class InputSearch extends React.Component<InputSearchProps,InputS
     if(onSearch) onSearch(value)
     if(onChange) onChange(value)
   }
+  onBlur = () => {
+    const { onChange } = this.props
+    const { value } = this.state
+    if(onChange) onChange(value)
+  }
   onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       value: e.target.value
@@ -33,6 +39,6 @@ export default class InputSearch extends React.Component<InputSearchProps,InputS
   }
   render() {
     const { value } = this.state
-    return <Search {...this.props} onChange={this.onChange} value={value} onSearch={this.onSearchHandler}/>;
+    return <Search {...this.props} onChange={this.onChange} value={value} onSearch={this.onSearchHandler} onBlur={this.onBlur}/>;
   }
 }

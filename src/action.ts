@@ -17,9 +17,9 @@ class CarAction extends BaseAction{
     super(reducer,api,middleware)
   }
 
+
   @loading()
   @param()
-  // @other()
   async fetchPage(params:any) {
     // return Promise.resolve()
     const data = await this.api.fetchList(params);
